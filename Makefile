@@ -6,15 +6,17 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#    Updated: 2016/02/15 17:01:26 by cchameyr         ###   ########.fr        #
+#    Updated: 2016/02/15 17:14:33 by cchameyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =			fractol
 
-SRC =			./sources/main.c
+SRC =			./sources/main.c \
+				./sources/julia.c
 
-OBJS =			main.o
+OBJS =			main.o \
+				julia.o
 
 DRAW =			./draw/draw.a
 

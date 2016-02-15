@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 16:58:57 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/15 17:12:25 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@
 # include "draw.h"
 # include "mlx.h"
 # include "X.h"
+
+void	ft_julia(void);
+//void	ft_mandelbrot(void);
 
 #endif
