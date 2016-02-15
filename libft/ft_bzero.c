@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/29 12:39:37 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/11/30 12:11:51 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "libft.h"
 
-# include "libft.h"
-# include "draw.h"
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*c_s;
 
-#endif
+	c_s = (unsigned char *)s;
+	i = 0;
+	if (n > 0)
+	{
+		while (i < n)
+		{
+			c_s[i] = '\0';
+			i++;
+		}
+	}
+}

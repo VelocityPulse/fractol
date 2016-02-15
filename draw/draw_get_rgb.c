@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   draw_get_rgb.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 12:16:44 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 12:16:50 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "draw.h"
 
-# include "libft.h"
-# include "draw.h"
+t_rgb	ft_get_rgb(int hexa)
+{
+	t_rgb	rgb;
 
-#endif
+	rgb.r = (hexa / (256 * 256)) % 256;
+	rgb.g = (hexa / 256) % 256;
+	rgb.b = hexa % 256;
+	return (rgb);
+}

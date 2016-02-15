@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/23 17:00:40 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/12/21 15:27:11 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "libft.h"
 
-# include "libft.h"
-# include "draw.h"
+char	*ft_strcat(char *s1, char *s2)
+{
+	int		size;
+	int		cpt;
 
-#endif
+	cpt = 0;
+	size = ft_strlen(s1);
+	while (s2[cpt])
+		s1[size++] = s2[cpt++];
+	s1[size] = '\0';
+	return (s1);
+}

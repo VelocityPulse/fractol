@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   draw_init_matrix.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 12:17:13 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 12:17:18 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "draw.h"
 
-# include "libft.h"
-# include "draw.h"
+t_matrix	ft_init_matrix(t_pt pos)
+{
+	t_matrix	m;
 
-#endif
+	m.x = ft_make_vector(0.0f, 0.0f, 0.0f);
+	m.y = ft_make_vector(0.0f, 0.0f, 0.0f);
+	m.z = ft_make_vector(0.0f, 0.0f, 0.0f);
+	m.pos = pos;
+	return (m);
+}

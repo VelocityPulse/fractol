@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   draw_add_vector.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 12:22:13 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 12:22:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "draw.h"
 
-# include "libft.h"
-# include "draw.h"
-
-#endif
+t_vector	ft_add_vector(t_vector v, float x, float y, float z)
+{
+	v.x += x;
+	v.y += y;
+	v.z += z;
+	return (v);
+}

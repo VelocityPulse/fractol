@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   draw_reset_image.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 12:20:49 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 12:20:53 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "draw.h"
 
-# include "libft.h"
-# include "draw.h"
+void	ft_reset_image(t_mlx *mlx, int color)
+{
+	int		octet;
+	int		position;
+	char	*img;
 
-#endif
+	img = mlx->mlx_img->data;
+	octet = mlx->mlx_img->bpp / 8;
+	position = 0;
+	while (position < mlx->mlx_img->max_size)
+	{
+		ft_memcpy(img + position, &color, octet);
+		position += octet;
+	}
+}

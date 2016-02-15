@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   draw_apply_matrix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 12:22:23 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 12:22:24 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "draw.h"
 
-# include "libft.h"
-# include "draw.h"
+t_pt	ft_apply_matrix(t_pt3d pt, t_matrix t)
+{
+	t_pt	new_pt;
 
-#endif
+	new_pt.x = (t.x.x * pt.x) + (t.x.y * pt.y) + (t.x.z * pt.z);
+	new_pt.y = (t.y.x * pt.x) + (t.y.y * pt.y) + (t.y.z * pt.z);
+	return (new_pt);
+}

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_make_pt3df.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/11 15:00:45 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/11 15:00:47 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "libft.h"
 
-# include "libft.h"
-# include "draw.h"
+t_pt3df		ft_make_pt3df(float x, float y, float z)
+{
+	t_pt3df	pt;
 
-#endif
+	pt.x = x;
+	pt.y = y;
+	pt.z = z;
+	return (pt);
+}

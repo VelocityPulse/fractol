@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/27 12:10:32 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/12/23 12:06:15 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "libft.h"
+#include <stdlib.h>
 
-# include "libft.h"
-# include "draw.h"
+char	*ft_strnew(size_t size)
+{
+	char	*str;
 
-#endif
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (str)
+		return (ft_memset(str, 0, size + 1));
+	return (NULL);
+}

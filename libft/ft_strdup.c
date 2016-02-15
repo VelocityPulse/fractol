@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/23 17:36:23 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/12/22 22:42:54 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "libft.h"
 
-# include "libft.h"
-# include "draw.h"
+char	*ft_strdup(const char *s1)
+{
+	int		cpt;
+	char	*s2;
 
-#endif
+	cpt = 0;
+	s2 = ft_strnew(ft_strlen(s1));
+	if (!s2)
+		return (NULL);
+	while (s1[cpt])
+	{
+		s2[cpt] = s1[cpt];
+		cpt++;
+	}
+	s2[cpt] = '\0';
+	return (s2);
+}

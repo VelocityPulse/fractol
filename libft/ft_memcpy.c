@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/24 15:58:43 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/11/30 16:44:48 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "libft.h"
 
-# include "libft.h"
-# include "draw.h"
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char	*s;
+	char	*d;
 
-#endif
+	s = (char *)src;
+	d = (char *)dst;
+	if (n == 0 || d == s)
+		return ((void *)d);
+	while (--n)
+		*d++ = *s++;
+	*d = *s;
+	return (dst);
+}

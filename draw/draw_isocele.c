@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   draw_isocele.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/15 12:17:24 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/15 12:17:28 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "draw.h"
 
-# include "libft.h"
-# include "draw.h"
-
-#endif
+void	ft_draw_isocele(t_area t, t_mlx *mlx, int color)
+{
+	ft_draw_line(ft_make_line(t.a.x, t.a.y, t.b.x, t.b.y), mlx, color);
+	ft_draw_line(ft_make_line(t.b.x, t.b.y, t.c.x, t.c.y), mlx, color);
+	ft_draw_line(ft_make_line(t.a.x, t.a.y, t.c.x, t.c.y), mlx, color);
+}

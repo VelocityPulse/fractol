@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cchameyr <cchameyr@students.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:50:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2015/11/27 15:57:38 by cchameyr          #+#    #+#             */
+/*   Updated: 2015/12/29 14:15:23 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _HEADER_H
-# define _HEADER_H
+#include "libft.h"
+#include <stdlib.h>
 
-# include "libft.h"
-# include "draw.h"
+void	*ft_memalloc(size_t size)
+{
+	void	*ret;
 
-#endif
+	ret = (void *)malloc(size);
+	if (!ret)
+		return (NULL);
+	ft_bzero(ret, size);
+	return (ret);
+}
