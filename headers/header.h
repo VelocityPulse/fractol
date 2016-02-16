@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 17:12:25 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/16 12:45:08 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@
 # include "mlx.h"
 # include "X.h"
 
-void	ft_julia(void);
-//void	ft_mandelbrot(void);
+typedef struct	s_fractol
+{
+	int					n;
+	t_mlx				*mlx;
+	struct s_fractol	*next;
+}				t_fractol;
+
+t_mlx			*ft_julia(int n);
+t_mlx			*ft_mandelbrot(int n);
 
 #endif
