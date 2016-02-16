@@ -15,12 +15,14 @@ NAME =			fractol
 SRC =			./sources/main.c \
 				./sources/julia.c \
 				./sources/mandelbrot.c \
-				./sources/list_fractol.c
+				./sources/list_fractol.c \
+				./sources/start.c
 
 OBJS =			main.o \
 				julia.o \
 				mandelbrot.o \
-				list_fractol.o
+				list_fractol.o \
+				start.o
 
 DRAW =			./draw/draw.a
 
