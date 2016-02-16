@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#    Updated: 2016/02/16 12:13:45 by cchameyr         ###   ########.fr        #
+#*   Updated: 2016/02/16 13:59:30 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT =			./libft/libft.a
 
 LIBMLX =		./libmlx/libmlx.a
 
-LMLX =			-lmlx
+LMLX =			#-lmlx
 
 FRAMEWORK =		$(LMLX) -framework OpenGL -framework AppKit
 

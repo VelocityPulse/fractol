@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 12:30:29 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 16:57:48 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:58:40 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define _DRAW_STRUCTS_H
 
 # include "../headers/libft.h"
-# include "mlx.h"
 
 typedef struct	s_area
 {

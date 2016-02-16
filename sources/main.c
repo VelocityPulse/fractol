@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:00 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/16 12:48:36 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:59:14 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_display_list(char *str)
 {
 	ft_putstr(str);
-	ft_pustr(" is not a fracals.\n");
+	ft_putstr(" is not a fracals.\n");
 	ft_putstr("List of available fractals :\n");
 	ft_putstr("-Julia\n");
 	ft_putstr("-Mandelbrot\n");
