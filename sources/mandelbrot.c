@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/16 16:16:43 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/16 17:06:36 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 	if (keycode == 53)
 	{
 		if (info->n == 1)
-		{
-			
-		}
+			ft_exit_all_fractal(info);
+//		else
+//			ft_exit_one_fractal(info);
 	}
 	keycode = 1;
-	info->mlx = NULL;
 	return (1);
 }
 
-t_mlx	*ft_mandelbrot(int n, t_fractol *begin)
+t_mlx	*ft_mandelbrot(int n, t_fractol **begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
@@ -36,17 +35,17 @@ t_mlx	*ft_mandelbrot(int n, t_fractol *begin)
 
 	info = (t_hook_info *)ft_memalloc(sizeof(t_hook_info));
 	info->n = n;
-	info->begin = begin;
+	info->l_fractol = *begin;
 	str2 = ft_itoa(i);
 	if (n == 1)
 		str1 = ft_strjoin("main : fract'ol Mandelbrot ", str2);
 	else
 		str1 = ft_strjoin("fract'ol Mandelbrot ", str2);
-	info->mlx = NULL;
-	info->mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->mlx, str1);
-	mlx_key_hook(info->mlx->p_win, key_hook_mandelbrot, info);
+	info->current_mlx = NULL;
+	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->current_mlx, str1);
+	mlx_key_hook(info->current_mlx->p_win, key_hook_mandelbrot, info);
 	i++;
 	ft_memdel((void **)&str1);
 	ft_memdel((void **)&str2);
-	return (info->mlx);
+	return (info->current_mlx);
 }

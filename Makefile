@@ -16,13 +16,15 @@ SRC =			./sources/main.c \
 				./sources/julia.c \
 				./sources/mandelbrot.c \
 				./sources/list_fractol.c \
-				./sources/start.c
+				./sources/start.c \
+				./sources/exit.c
 
 OBJS =			main.o \
 				julia.o \
 				mandelbrot.o \
 				list_fractol.o \
-				start.o
+				start.o \
+				exit.o
 
 DRAW =			./draw/draw.a
 
