@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/16 12:45:08 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/16 14:07:09 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ typedef struct	s_fractol
 
 t_mlx			*ft_julia(int n);
 t_mlx			*ft_mandelbrot(int n);
+
+t_fractol		*ft_add_list_fractol(void);
 
 #endif
