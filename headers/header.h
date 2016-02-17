@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/17 11:56:22 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/17 12:21:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct	s_hook_info
 }				t_hook_info;
 
 void			ft_start(int ac, char **av);
-void			ft_exit_all_fractal(t_hook_info *info);
-//void			ft_exit_one_fractal(t_hook_info *info);
+void			ft_exit_all_fractol(t_hook_info *info);
+//void			ft_exit_one_fractol(t_hook_info *info);
 
 t_mlx			*ft_julia(int n, t_fractol **begin);
 t_mlx			*ft_mandelbrot(int n, t_fractol **begin);

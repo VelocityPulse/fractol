@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/16 17:06:13 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/17 12:21:27 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		key_hook_julia(int keycode, t_hook_info *info)
 	if (keycode == 53)
 	{
 		if (info->n == 1)
-			ft_exit_all_fractal(info);
+			ft_exit_all_fractol(info);
 //		else
 //			ft_exit_one_fractal(info);
 	}
