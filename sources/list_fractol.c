@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 14:01:47 by                   #+#    #+#             */
-/*   Updated: 2016/02/16 16:53:47 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/17 12:12:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ void		*ft_free_list_fractol(t_fractol *begin)
 	t_fractol	*temp;
 
 	if (!begin)
+	{
+		TEST
 		return (NULL);
+	}
 	while (begin)
 	{
 		temp = begin->next;
-		YOLO1
 		ft_clear_mlx(begin->mlx);
-		YOLO2
 		ft_memdel((void **)&begin);
 		begin = temp;
 	}
