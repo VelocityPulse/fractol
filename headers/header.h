@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 14:36:50 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 17:08:34 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # include "debug.h"
 
-# define W_WIDTH 300
+# define W_WIDTH 500
 # define W_HEIGHT 400
 
 typedef struct	s_fractol
@@ -43,8 +43,9 @@ void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
 void			ft_exit_one_fractol(t_hook_info *info);
 
-t_fractol		*ft_julia(int n, t_fractol *begin);
-t_fractol		*ft_mandelbrot(int n, t_fractol *begin);
+t_fractol		*ft_add_julia(int n, t_fractol *begin);
+void			ft_julia(t_hook_info *info);
+t_fractol		*ft_add_mandelbrot(int n, t_fractol *begin);
 
 t_fractol		*ft_new_list_fractol(void);
 t_fractol		*ft_add_list_fractol(t_fractol *begin, t_mlx *mlx, int n);

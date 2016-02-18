@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 14:54:48 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 17:13:31 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 {
-//	ft_putstr("keyhook mandelbrot\n");
+	//	ft_putstr("keyhook mandelbrot\n");
 	if (keycode == 53)
 	{
 		if (info->n == 1)
@@ -22,11 +22,10 @@ int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 		else
 			ft_exit_one_fractol(info);
 	}
-	keycode = 1;
 	return (1);
 }
 
-t_fractol	*ft_mandelbrot(int n, t_fractol *begin)
+t_fractol	*ft_add_mandelbrot(int n, t_fractol *begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
