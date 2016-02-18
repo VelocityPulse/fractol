@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 12:00:38 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 14:38:28 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 	return (1);
 }
 
-t_mlx	*ft_mandelbrot(int n, t_fractol **begin)
+t_fractol	*ft_mandelbrot(int n, t_fractol *begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
@@ -35,7 +35,7 @@ t_mlx	*ft_mandelbrot(int n, t_fractol **begin)
 
 	info = (t_hook_info *)ft_memalloc(sizeof(t_hook_info));
 	info->n = n;
-	info->l_fractol = *begin;
+	info->l_fractol = begin;
 	str2 = ft_itoa(i);
 	if (n == 1)
 		str1 = ft_strjoin("main : fract'ol Mandelbrot ", str2);
@@ -47,5 +47,6 @@ t_mlx	*ft_mandelbrot(int n, t_fractol **begin)
 	i++;
 	ft_memdel((void **)&str1);
 	ft_memdel((void **)&str2);
-	return (info->current_mlx);
+	begin = ft_add_list_fractol(begin, info->current_mlx, n);
+	return (begin);
 }

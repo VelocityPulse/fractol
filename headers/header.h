@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/17 15:59:21 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 14:36:50 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
 void			ft_exit_one_fractol(t_hook_info *info);
 
-t_mlx			*ft_julia(int n, t_fractol **begin);
-t_mlx			*ft_mandelbrot(int n, t_fractol **begin);
+t_fractol		*ft_julia(int n, t_fractol *begin);
+t_fractol		*ft_mandelbrot(int n, t_fractol *begin);
 
 t_fractol		*ft_new_list_fractol(void);
 t_fractol		*ft_add_list_fractol(t_fractol *begin, t_mlx *mlx, int n);

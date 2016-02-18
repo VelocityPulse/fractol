@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 15:41:01 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 12:54:24 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 14:38:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ void	ft_start(int ac, char **av)
 	i = 1;
 	if (ac > 1)
 	{
-		begin = ft_new_list_fractol();
 		while (i < ac)
 		{
 			if (!ft_strcmp(av[i], "Julia"))
-				begin = ft_julia(i, &begin);
+				begin = ft_julia(i, begin);
 			else if (!ft_strcmp(av[i], "Mandelbrot"))
-				begin = ft_add_list_fractol(begin, ft_mandelbrot(i, &begin), i);
+				begin = ft_mandelbrot(i, begin);
 			else
 				ft_display_list(av[i]);
 			i++;
