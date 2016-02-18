@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 12:00:30 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 12:54:35 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		key_hook_julia(int keycode, t_hook_info *info)
 	return (1);
 }
 
-t_mlx	*ft_julia(int n, t_fractol **begin)
+t_fractol	*ft_julia(int n, t_fractol **begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
