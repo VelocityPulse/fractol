@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_fractol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/16 14:01:47 by                   #+#    #+#             */
-/*   Updated: 2016/02/18 12:42:51 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/18 14:58:17 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/18 14:58:19 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_fractol		*ft_add_list_fractol(t_fractol *begin, t_mlx *mlx, int n)
 	while (list->next)
 		list = list->next;
 	list->next = ft_new_list_fractol();
+	list = list->next;
 	list->mlx = mlx;
 	list->n = n;
 	return (begin);

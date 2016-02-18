@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 15:41:01 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 14:38:15 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 14:45:07 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_start(int ac, char **av)
 	int			i;
 
 	i = 1;
+	begin = NULL;
 	if (ac > 1)
 	{
 		while (i < ac)
