@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 14:01:47 by                   #+#    #+#             */
-/*   Updated: 2016/02/17 16:25:59 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 12:42:51 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,10 @@ t_fractol		*ft_free_fractol_list(t_fractol *begin)
 	while (begin)
 	{
 		temp = begin->next;
-		printf("free toute les listes\n");
 		ft_clear_mlx(begin->mlx);
 		ft_memdel((void **)&begin);
-		printf(" - ");
 		begin = temp;
 	}
-	printf("\n");
 	return (begin);
 }
 

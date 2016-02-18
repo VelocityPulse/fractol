@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/17 15:54:56 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 12:00:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 {
-	ft_putstr("keyhook mandelbrot\n");
+//	ft_putstr("keyhook mandelbrot\n");
 	if (keycode == 53)
 	{
 		if (info->n == 1)

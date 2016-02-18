@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/17 16:03:42 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/18 12:00:30 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		key_hook_julia(int keycode, t_hook_info *info)
 {
-	ft_putstr("keyhook julia\n");
+//	ft_putstr("keyhook julia\n");
 	if (keycode == 53)
 	{
 		if (info->n == 1)
