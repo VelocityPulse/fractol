@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 16:23:54 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/19 13:17:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ int		key_hook_julia(int keycode, t_hook_info *info)
 
 void		ft_julia(t_hook_info *info)
 {
+	double	x1 = -2.1;
+	double	x2 = 0.6;
+	double	y1 = -1.2;
+	double	y2 = 1.2;
+	double	zoom = 100;
+
+	int		image_x = (x2 - x1) * zoom;
+	int		image_y = (y2 - y1) * zoom;
+
 	double	c_r;
 	double	c_i;
 	double	z_r;
@@ -39,29 +48,34 @@ void		ft_julia(t_hook_info *info)
 
 	ft_reset_image(info->current_mlx, 0);
 	p = ft_make_pt(0, 0);
-	while (p.y < info->current_mlx->height)
+	printf("\nimage_x = %d\nimage_y = %d\n\n", image_x, image_y);
+	while (p.y < image_y)
 	{
-		while (p.x < info->current_mlx->width)
+		while (p.x < image_x)
 		{
-			c_r = p.x;
-			c_i = p.y;
+			c_r = (double)p.x / (zoom + x1);
+			c_i = (double)p.y / (zoom + y1);
 			z_r = 0;
 			z_i = 0;
 			i = 0;
 			while ((z_r * z_r) + (z_i * z_i) < 4 && i < 50)
 			{
 				tmp = z_r;
-				z_r = (z_r * z_r) - (z_i * z_i) + c_r;
+				z_r = z_r * z_r - z_i * z_i + c_r;
 				z_i = 2 * z_i * tmp + c_i;
-				i += 1;
+				i++;
 			}
+//			printf("%f ", (z_r * z_r) + (z_i * z_i));
+			printf("%f ", (float)i);
 			if (i == 50)
+			{
+				YOLO2
 				ft_draw_pixel(info->current_mlx, 0x00ff00, p);
+			}
 			p.x++;
 		}
 		p.y++;
 	}
-	YOLO
 	ft_flush_image(info->current_mlx);
 }
 
