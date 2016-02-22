@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/19 14:48:24 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/22 12:46:34 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int		key_hook_julia(int keycode, t_hook_info *info)
 		else
 			ft_exit_one_fractol(info);
 	}
-	ft_julia(info);
+	else
+		ft_julia(info);
 	return (1);
 }
 
@@ -49,7 +50,6 @@ void		ft_julia(t_hook_info *info)
 
 	ft_reset_image(info->current_mlx, 0);
 	p = ft_make_pt(0, 0);
-//	printf("\nimage_x = %d\nimage_y = %d\n\n", image_x, image_y);
 	while (p.x < image_x)
 	{
 		p.y = 0;
@@ -67,8 +67,6 @@ void		ft_julia(t_hook_info *info)
 				z_i = 2 * z_i * tmp + c_i;
 				i++;
 			}
-//			printf("%f ", (z_r * z_r) + (z_i * z_i));
-//			printf("%f ", (float)i);
 			if (i == 50)
 				ft_draw_pixel(info->current_mlx, 0x00ff00, p);
 			p.y++;
