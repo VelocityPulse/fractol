@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/22 12:46:34 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/23 12:07:59 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		key_hook_julia(int keycode, t_hook_info *info)
 	}
 	else
 		ft_julia(info);
-	return (1);
+	return (0);
 }
 
 void		ft_julia(t_hook_info *info)
@@ -73,6 +73,7 @@ void		ft_julia(t_hook_info *info)
 		}
 		p.x++;
 	}
+	mlx_do_sync(info->current_mlx);
 	ft_flush_image(info->current_mlx);
 }
 
@@ -94,7 +95,9 @@ t_fractol	*ft_add_julia(int n, t_fractol *begin)
 	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->current_mlx, str1);
 	begin = ft_add_list_fractol(begin, info->current_mlx, n);
 	info->l_fractol = begin;
-	mlx_key_hook(info->current_mlx->p_win, key_hook_julia, info);
+	mlx_hook(info->current_mlx->p_win, KeyPress, KeyPressMask, key_hook_julia, info);
+	if (n > 1)
+		ft_julia(info);
 	i++;
 	ft_memdel((void **)&str1);
 	ft_memdel((void **)&str2);
