@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/25 11:38:21 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/25 15:18:16 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # include "debug.h"
 
-# define W_WIDTH 1300
+# define W_WIDTH 1400
 # define W_HEIGHT 1100
 
 typedef struct	s_fractol
@@ -35,6 +35,7 @@ typedef struct	s_fractol
 typedef struct	s_hook_info
 {
 	int			n;
+	int			keycode;
 	t_mlx		*current_mlx;
 	t_fractol	*l_fractol;
 }				t_hook_info;
