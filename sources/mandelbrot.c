@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/18 17:13:31 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/25 11:40:29 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,60 @@ int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 		else
 			ft_exit_one_fractol(info);
 	}
+	ft_mandelbrot(info);
 	return (1);
+}
+
+void		ft_mandelbrot(t_hook_info *info)
+{
+	double	x1 = -2.1;
+	double	x2 = 0.6;
+	double	y1 = -1.2;
+	double	y2 = 1.2;
+
+	int		image_x = W_WIDTH;
+	int		image_y = W_HEIGHT;
+
+	double	zoom_x = image_x / (x2 - x1);
+	double	zoom_y = image_y / (y2 - y1);
+
+	double	c_r;
+	double	c_i;
+	double	z_r;
+	double	z_i;
+	double	i;
+	double	tmp;
+	t_pt	p;
+
+	ft_reset_image(info->current_mlx, 0);
+	p = ft_make_pt(0, 0);
+	while (p.x < image_x)
+	{
+		p.y = 0;
+		while (p.y < image_y)
+		{
+			c_r = (double)p.x / zoom_x + x1;
+			c_i = (double)p.y / zoom_y + y1;
+			z_r = 0;
+			z_i = 0;
+			i = 0;
+			while ((z_r * z_r) + (z_i * z_i) < 10 && i < 50)
+			{
+				tmp = z_r;
+				z_r = z_r * z_r - z_i * z_i + c_r;
+				z_i = 2 * z_i * tmp + c_i;
+				i++;
+			}
+			if (i == 50)
+				ft_draw_pixel(info->current_mlx, 0x000000, p);
+			else
+				ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / 50, 0), p);
+			p.y++;
+		}
+		p.x++;
+	}
+	mlx_do_sync(info->current_mlx);
+	ft_flush_image(info->current_mlx);
 }
 
 t_fractol	*ft_add_mandelbrot(int n, t_fractol *begin)
@@ -44,8 +97,11 @@ t_fractol	*ft_add_mandelbrot(int n, t_fractol *begin)
 	begin = ft_add_list_fractol(begin, info->current_mlx, n);
 	info->l_fractol = begin;
 	mlx_key_hook(info->current_mlx->p_win, key_hook_mandelbrot, info);
+	if (n < 1)
+		ft_mandelbrot(info);
 	i++;
 	ft_memdel((void **)&str1);
 	ft_memdel((void **)&str2);
+	ft_mandelbrot(info);
 	return (begin);
 }
