@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/25 15:18:16 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/28 21:36:00 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 # include "debug.h"
 
-# define W_WIDTH 1400
-# define W_HEIGHT 1100
+# define W_WIDTH 1100
+# define W_HEIGHT 750
 
 typedef struct	s_fractol
 {

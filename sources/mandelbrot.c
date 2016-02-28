@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/25 15:49:15 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/02/28 22:39:22 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,30 @@ void		ft_edit_zoom(double *x1, double *x2, double *y1, double *y2,
 {
 	if (keycode == 24) // +
 	{
-		*zoom_x += 60;
-		*zoom_y += 60;
-		*x1 /= 1.1;
-		*y1 /= 1.1;
-		*x2 *= 1.1;
-		*y2 *= 1.1;
-		*i_max += 1;
+		*zoom_x *= 1.4;
+		*zoom_y *= 1.4;
+		*x1 /= 1.2;
+		*x2 *= 1.2;
+		*y1 /= 1.2;
+		*y2 *= 1.2;
+		*i_max *= 1.01;
 	}
 	else if (keycode == 27) // -
 	{
-		*zoom_x -= 60;
-		*zoom_y -= 60;
-		*x1 *= 1.1;
-		*y1 *= 1.1;
-		*x2 /= 1.1;
-		*y2 /= 1.1;
-		*i_max -= 1;
+		*zoom_x /= 1.4;
+		*zoom_y /= 1.4;
+		*x1 *= 1.2;
+		*x2 /= 1.2;
+		*y1 *= 1.2;
+		*y2 /= 1.2;
+		*i_max /= 1.01;
 	}
 	(void)i_max;
 	(void)x2;
 	(void)y2;
+	(void)zoom_x;
+	(void)zoom_y;
+	printf("i_max : %f\n", *i_max);
 }
 
 void		ft_mandelbrot(t_hook_info *info)
@@ -95,7 +98,7 @@ void		ft_mandelbrot(t_hook_info *info)
 			z_r = 0;
 			z_i = 0;
 			i = 0;
-			while ((z_r * z_r) + (z_i * z_i) < 10 && i < i_max)
+			while ((z_r * z_r) + (z_i * z_i) < 4 && i < i_max)
 			{
 				tmp = z_r;
 				z_r = z_r * z_r - z_i * z_i + c_r;

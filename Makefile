@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/02/16 13:59:30 by                  ###   ########.fr       *#
+#*   Updated: 2016/02/28 22:46:09 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT =			./libft/libft.a
 
 LIBMLX =		./libmlx/libmlx.a
 
-LMLX =			-lmlx
+LMLX =			#-lmlx
 
 FRAMEWORK =		$(LMLX) -framework OpenGL -framework AppKit
 
@@ -58,8 +58,8 @@ $(DRAW):
 
 clean:
 	$(RM) $(OBJS)
-	make fclean -C ./draw/
-	make fclean -C ./libft/
+	make clean -C ./draw/
+	make clean -C ./libft/
 
 fclean: clean
 	$(RM) $(NAME) $(LIBFT) $(DRAW)
