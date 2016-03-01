@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/29 13:45:34 by                  ###   ########.fr       */
+/*   Updated: 2016/03/01 13:10:41 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,20 @@ typedef struct	s_fractol
 	struct s_fractol	*next;
 }				t_fractol;
 
+typedef struct	s_mouse_info
+{
+	int		button;
+	t_pt	zoom;
+	t_pt	p;
+}				t_mouse_info;
+
 typedef struct	s_hook_info
 {
-	int			n;
-	int			keycode;
-	t_mlx		*current_mlx;
-	t_fractol	*l_fractol;
+	int				n;
+	int				keycode;
+	t_mlx			*current_mlx;
+	t_fractol		*l_fractol;
+	t_mouse_info	mouse;
 }				t_hook_info;
 
 void			ft_start(int ac, char **av);
