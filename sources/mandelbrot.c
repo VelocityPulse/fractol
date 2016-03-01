@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/29 17:52:05 by                  ###   ########.fr       */
+/*   Updated: 2016/03/01 11:50:17 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ void		ft_edit_zoom(double *x1, double *x2, double *y1, double *y2,
 	if (keycode == 24) // +
 	{
 		*zoom *= 1.5;
+		*i_max *= 1.05;
 	}
 	else if (keycode == 27) // -
 	{
 		*zoom /= 1.5;
+		*i_max /= 1.05;
 	}
 	(void)i_max;
 	(void)x1;
@@ -60,7 +62,7 @@ void		ft_mandelbrot(t_hook_info *info)
 	double	z_r;
 	double	z_i;
 	double	i;
-	static double	i_max = 32;
+	static double	i_max = 100;
 	double	tmp;
 	t_pt	p;
 	t_pt	min;
@@ -111,11 +113,11 @@ void		ft_mandelbrot(t_hook_info *info)
 			if (image_x < W_WIDTH)
 				c_r = (double)(p.x - min.x) / zoom + x1;
 			else
-				c_r = (double)p.x / zoom + x1;
+				c_r = (double)(p.x + min.x)/ zoom + x1;
 			if (image_y < W_HEIGHT)
 				c_i = (double)(p.y - min.y) / zoom + y1;
 			else
-				c_i = (double)p.y / zoom + y1;
+				c_i = (double)(p.y + min.y)  / zoom + y1;
 			z_r = 0;
 			z_i = 0;
 			i = 0;
@@ -140,13 +142,14 @@ void		ft_mandelbrot(t_hook_info *info)
 				else
 					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, 0), p);
 			}
+			cpt++;
 			p.y++;
 		}
 		p.x++;
 		cpt2++;
 	}
 	printf("y : %d\n", p.y);
-	printf("x : %d\n", p.x - (image_x - W_WIDTH) / 2);
+	printf("x : %d\n", p.x);
 	ft_draw_pixel(info->current_mlx, 0xffffff, ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
 	printf("%ld %ld\n", cpt, cpt2);
 	mlx_do_sync(info->current_mlx);
