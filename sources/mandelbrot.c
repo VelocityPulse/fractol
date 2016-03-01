@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/01 13:11:32 by                  ###   ########.fr       */
+/*   Updated: 2016/03/01 17:00:02 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int		mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 {
+	static float iter = 0.6;
+
+	iter += 0.6;
 	button = 0;
 	info->mouse.p = ft_make_pt(x, y);
-	info->mouse.zoom.x = W_WIDTH - x * 2;
-	info->mouse.zoom.y = W_HEIGHT - y * 2;
+	info->mouse.zoom.x += ((x * 2 - W_WIDTH) / 2);
+	info->mouse.zoom.y += ((y * 2 - W_HEIGHT) / 2);
+	info->mouse.zoom.x *= 1.5;
+	info->mouse.zoom.y *= 1.5;
 	info->keycode = 24;
 	ft_mandelbrot(info);
 	return (1);
@@ -49,7 +54,7 @@ void		ft_edit_zoom(double *x1, double *x2, double *y1, double *y2,
 	else if (keycode == 27) // -
 	{
 		*zoom /= 1.5;
-		*i_max /= 1.05;
+		*i_max /= 1.15;
 		info->mouse.zoom.x /= 2;
 		info->mouse.zoom.y /= 2;
 	}
@@ -91,7 +96,7 @@ void		ft_mandelbrot(t_hook_info *info)
 	min = ft_make_pt(0, 0);
 	ft_edit_zoom(&x1, &x2, &y1, &y2, &zoom, &i_max, info->keycode, info);
 
-	printf("mouse x : %d\nmouse y : %d\n", info->mouse.p.x, info->mouse.p.y);
+	printf("mouse x : %d\nmouse y : %d\n", info->mouse.zoom.x, info->mouse.zoom.y);
 
 	int		image_x = (x2 - x1) * zoom;
 	int		image_y = (y2 - y1) * zoom;
@@ -126,13 +131,13 @@ void		ft_mandelbrot(t_hook_info *info)
 		while (++index.y < max.y)
 		{
 			if (image_x < W_WIDTH)
-				c_r = (double)(p.x - min.x + info->mouse.p.x) / zoom + x1;
+				c_r = (double)(p.x - min.x + info->mouse.zoom.x) / zoom + x1;
 			else
-				c_r = (double)(p.x + min.x + info->mouse.p.x)/ zoom + x1;
+				c_r = (double)(p.x + min.x + info->mouse.zoom.x)/ zoom + x1;
 			if (image_y < W_HEIGHT)
-				c_i = (double)(p.y - min.y + info->mouse.p.y) / zoom + y1;
+				c_i = (double)(p.y - min.y + info->mouse.zoom.y) / zoom + y1;
 			else
-				c_i = (double)(p.y + min.y + info->mouse.p.y)  / zoom + y1;
+				c_i = (double)(p.y + min.y + info->mouse.zoom.y)  / zoom + y1;
 			z_r = 0;
 			z_i = 0;
 			i = 0;
@@ -146,16 +151,16 @@ void		ft_mandelbrot(t_hook_info *info)
 			if (i >= i_max)
 			{
 				if (image_x > W_WIDTH)
-					ft_draw_pixel(info->current_mlx, 0x000000, p);
+					ft_draw_pixel(info->current_mlx, 0x555555, p);
 				else
-					ft_draw_pixel(info->current_mlx, 0x000000, p);
+					ft_draw_pixel(info->current_mlx, 0x555555, p);
 			}
 			else
 			{
 				if (image_y > W_HEIGHT)
-					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, 0), p);
+					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, i * 255 / i_max), p);
 				else
-					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, 0), p);
+					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, i * 255 / i_max), p);
 			}
 			cpt++;
 			p.y++;
@@ -165,7 +170,7 @@ void		ft_mandelbrot(t_hook_info *info)
 	}
 	printf("y : %d\n", p.y);
 	printf("x : %d\n", p.x);
-	ft_draw_pixel(info->current_mlx, 0xffffff, ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
+	ft_draw_pixel(info->current_mlx, 0x00ffff, ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
 	printf("%ld %ld\n\n", cpt, cpt2);
 	mlx_do_sync(info->current_mlx);
 	ft_flush_image(info->current_mlx);
