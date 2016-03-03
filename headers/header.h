@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/03 17:19:39 by                  ###   ########.fr       */
+/*   Updated: 2016/03/03 19:40:21 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_fractol
 typedef struct	s_mouse_info
 {
 	int			button;
+	int			x;
+	int			y;
 	long int	px;
 	long int	py;
 	int			nb_zoom;

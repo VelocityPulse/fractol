@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/03 18:26:58 by                  ###   ########.fr       */
+/*   Updated: 2016/03/03 19:42:28 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 	info->mouse.py += ((y * 2 - W_HEIGHT) / 2);
 	info->mouse.px *= 1.5;
 	info->mouse.py *= 1.5;
+	info->mouse.x = x;
+	info->mouse.y = y;
 	info->keycode = 24;
 	ft_mandelbrot(info);
 	button = 0;
@@ -54,6 +56,9 @@ void		ft_edit_reset(double *zoom, double *i_max, t_hook_info *info)
 
 void		ft_edit_zoom(double *zoom, double *i_max, int keycode, t_hook_info *info)
 {
+	static int		temp_div;
+	static t_pt		temp_p;
+
 	if (keycode == 24) // +
 	{
 		if (info->mouse.nb_zoom < 0)
@@ -63,18 +68,27 @@ void		ft_edit_zoom(double *zoom, double *i_max, int keycode, t_hook_info *info)
 		}
 		*zoom *= 1.5;
 		*i_max *= 1.12;
-		info->mouse.nb_zoom++;
+		temp_div = ++info->mouse.nb_zoom;
+		temp_p = ft_make_pt(info->mouse.px / temp_div, info->mouse.py / temp_div);
 	}
-	else if (keycode == 27 && info->mouse.nb_zoom > 0) // -
+	else if (keycode == 27) // -
 	{
 		if (info->mouse.nb_zoom > 0)
 		{
-			info->mouse.px -= info->mouse.px / info->mouse.nb_zoom;
-			info->mouse.py -= info->mouse.py / info->mouse.nb_zoom;
+//			info->mouse.px -= temp_p.x;
+//			info->mouse.py -= temp_p.y;
+			info->mouse.px -= (info->mouse.x * 2 - W_WIDTH) / 2;
+			info->mouse.py -= (info->mouse.y * 2 - W_WIDTH) / 2;
+			info->mouse.p // continuer ici les division 1.5
+			*zoom /= 1.5;
+			*i_max /= 1.12;
+			info->mouse.nb_zoom--;
 		}
-		*zoom /= 1.5;
-		*i_max /= 1.12;
-		info->mouse.nb_zoom--;
+		else
+		{
+			info->mouse.px = 0;
+			info->mouse.py = 0;
+		}
 	}
 	printf("nb_zoom : %d\n", info->mouse.nb_zoom);
 }
