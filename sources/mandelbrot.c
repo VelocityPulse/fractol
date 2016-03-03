@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/03 15:50:21 by                  ###   ########.fr       */
+/*   Updated: 2016/03/03 18:26:58 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int		mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 {
-	button = 0;
+	button = 1;
 	info->mouse.px += ((x * 2 - W_WIDTH) / 2);
 	info->mouse.py += ((y * 2 - W_HEIGHT) / 2);
 	info->mouse.px *= 1.5;
 	info->mouse.py *= 1.5;
 	info->keycode = 24;
 	ft_mandelbrot(info);
+	button = 0;
 	return (1);
 }
 
@@ -55,36 +56,21 @@ void		ft_edit_zoom(double *zoom, double *i_max, int keycode, t_hook_info *info)
 {
 	if (keycode == 24) // +
 	{
-		if (info->mouse.nb_zoom == -1)
-		{
-			info->mouse.px = 0;
-			info->mouse.py = 0;
-		}
-		else if (info->mouse.nb_zoom < 0)
+		if (info->mouse.nb_zoom < 0)
 		{
 			info->mouse.px += info->mouse.px / info->mouse.nb_zoom;
-			info->mouse.py += info->mouse.px / info->mouse.nb_zoom;
+			info->mouse.py += info->mouse.py / info->mouse.nb_zoom;
 		}
 		*zoom *= 1.5;
 		*i_max *= 1.12;
 		info->mouse.nb_zoom++;
 	}
-	else if (keycode == 27) // -
+	else if (keycode == 27 && info->mouse.nb_zoom > 0) // -
 	{
-		if (info->mouse.nb_zoom == 1)
-		{
-			info->mouse.px = 0;
-			info->mouse.py = 0;
-		}
-		else if (info->mouse.nb_zoom > 0)
+		if (info->mouse.nb_zoom > 0)
 		{
 			info->mouse.px -= info->mouse.px / info->mouse.nb_zoom;
 			info->mouse.py -= info->mouse.py / info->mouse.nb_zoom;
-		}
-		else
-		{
-			info->mouse.px += W_WIDTH / 2 - W_WIDTH / 1.5;
-			info->mouse.py += W_HEIGHT / 2 - W_HEIGHT / 1.5;
 		}
 		*zoom /= 1.5;
 		*i_max /= 1.12;
@@ -113,9 +99,6 @@ void		ft_mandelbrot(t_hook_info *info)
 	t_pt	min;
 	t_pt	max;
 	t_pt	index;
-
-	long int	cpt = 0;
-	long int	cpt2 = 0;
 
 	ft_reset_image(info->current_mlx, 0);
 	p = ft_make_pt(0, 0);
@@ -189,11 +172,9 @@ void		ft_mandelbrot(t_hook_info *info)
 				else
 					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, i * 255 / i_max), p);
 			}
-			cpt++;
 			p.y++;
 		}
 		p.x++;
-		cpt2++;
 	}
 	ft_draw_pixel(info->current_mlx, 0x00ffff, ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
 	mlx_do_sync(info->current_mlx);
