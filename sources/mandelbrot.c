@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/05 20:55:27 by                  ###   ########.fr       */
+/*   Updated: 2016/03/05 21:12:44 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int		mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 	info->mouse.py += ((y * 2 - W_HEIGHT) / 2);
 	info->mouse.px *= FACTOR_ZOOM;
 	info->mouse.py *= FACTOR_ZOOM;
-	info->mouse.x += x;
-	info->mouse.y += y;
 	info->keycode = 24;
 	ft_mandelbrot(info);
 	info->mouse.button = 0;
@@ -51,15 +49,12 @@ void		ft_edit_reset(double *zoom, double *i_max, t_hook_info *info)
 		*i_max = 70;
 		info->mouse.px = 0;
 		info->mouse.py = 0;
-		info->mouse.x = 0;
-		info->mouse.y = 0;
 		info->mouse.nb_zoom = 0;
 	}
 }
 
 void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 {
-	static t_pt		last_points;
 
 	if (info->keycode == 24) // +
 	{
@@ -67,26 +62,19 @@ void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 		{
 			info->mouse.px *= FACTOR_ZOOM;
 			info->mouse.py *= FACTOR_ZOOM;
-			info->mouse.x *= FACTOR_ZOOM;
-			info->mouse.y *= FACTOR_ZOOM;
 		}
 		*zoom *= FACTOR_ZOOM;
 		*i_max *= FACTOR_ZOOM - 0.38;
 		info->mouse.nb_zoom++;
-		last_points = ft_make_pt(info->mouse.px, info->mouse.py);
 	}
 	else if (info->keycode == 27) // -
 	{
-		if ((info->mouse.nb_zoom > 0) && ((last_points.x < 0 && info->mouse.px < 0) ||
-		(last_points.x > 0 && info->mouse.px > 0)) && ((last_points.y < 0 && info->mouse.py < 0) ||
-		(last_points.y > 0 && info->mouse.py > 0)))
+		if (info->mouse.nb_zoom)
 		{
 			info->mouse.px /= FACTOR_ZOOM;
 			info->mouse.py /= FACTOR_ZOOM;
-			info->mouse.px -= ((info->mouse.x / info->mouse.nb_zoom) * 2 - W_WIDTH) / 2;
-			info->mouse.py -= ((info->mouse.y / info->mouse.nb_zoom) * 2 - W_HEIGHT) / 2;
-			info->mouse.x -= info->mouse.x / info->mouse.nb_zoom;
-			info->mouse.y -= info->mouse.y / info->mouse.nb_zoom;
+			info->mouse.px -= info->mouse.px / info->mouse.nb_zoom;
+			info->mouse.py -= info->mouse.py / info->mouse.nb_zoom;
 			*zoom /= FACTOR_ZOOM;
 			*i_max /= FACTOR_ZOOM - 0.38;
 			info->mouse.nb_zoom--;
