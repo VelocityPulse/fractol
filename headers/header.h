@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/03 19:40:21 by                  ###   ########.fr       */
+/*   Updated: 2016/03/05 20:51:01 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define W_WIDTH 1080
 # define W_HEIGHT 750
+# define FACTOR_ZOOM 1.5
 
 typedef struct	s_fractol
 {

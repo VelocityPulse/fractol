@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/05 19:32:01 by                  ###   ########.fr       */
+/*   Updated: 2016/03/05 20:55:27 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 int		mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 {
-	button = 1;
+	info->mouse.button = 1;
 	info->mouse.px += ((x * 2 - W_WIDTH) / 2);
 	info->mouse.py += ((y * 2 - W_HEIGHT) / 2);
-	info->mouse.px *= 1.5;
-	info->mouse.py *= 1.5;
-	if (x > 0)
-		info->mouse.x += x;
-	else
-		info->mouse.x += -x;
-	if (y > 0)
-		info->mouse.y += y;
-	else
-		info->mouse.y += -y;
+	info->mouse.px *= FACTOR_ZOOM;
+	info->mouse.py *= FACTOR_ZOOM;
+	info->mouse.x += x;
+	info->mouse.y += y;
 	info->keycode = 24;
 	ft_mandelbrot(info);
+	info->mouse.button = 0;
 	button = 0;
 	return (1);
 }
@@ -62,32 +57,38 @@ void		ft_edit_reset(double *zoom, double *i_max, t_hook_info *info)
 	}
 }
 
-void		ft_edit_zoom(double *zoom, double *i_max, int keycode, t_hook_info *info)
+void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 {
+	static t_pt		last_points;
 
-	if (keycode == 24) // +
+	if (info->keycode == 24) // +
 	{
-		if (info->mouse.nb_zoom < 0)
+		if (info->mouse.button == 0)
 		{
-			info->mouse.px += info->mouse.px / info->mouse.nb_zoom;
-			info->mouse.py += info->mouse.py / info->mouse.nb_zoom;
+			info->mouse.px *= FACTOR_ZOOM;
+			info->mouse.py *= FACTOR_ZOOM;
+			info->mouse.x *= FACTOR_ZOOM;
+			info->mouse.y *= FACTOR_ZOOM;
 		}
-		*zoom *= 1.5;
-		*i_max *= 1.12;
+		*zoom *= FACTOR_ZOOM;
+		*i_max *= FACTOR_ZOOM - 0.38;
 		info->mouse.nb_zoom++;
+		last_points = ft_make_pt(info->mouse.px, info->mouse.py);
 	}
-	else if (keycode == 27) // -
+	else if (info->keycode == 27) // -
 	{
-		if (info->mouse.nb_zoom > 0)
+		if ((info->mouse.nb_zoom > 0) && ((last_points.x < 0 && info->mouse.px < 0) ||
+		(last_points.x > 0 && info->mouse.px > 0)) && ((last_points.y < 0 && info->mouse.py < 0) ||
+		(last_points.y > 0 && info->mouse.py > 0)))
 		{
-			info->mouse.px /= 1.5;
-			info->mouse.py /= 1.5;
+			info->mouse.px /= FACTOR_ZOOM;
+			info->mouse.py /= FACTOR_ZOOM;
 			info->mouse.px -= ((info->mouse.x / info->mouse.nb_zoom) * 2 - W_WIDTH) / 2;
 			info->mouse.py -= ((info->mouse.y / info->mouse.nb_zoom) * 2 - W_HEIGHT) / 2;
 			info->mouse.x -= info->mouse.x / info->mouse.nb_zoom;
 			info->mouse.y -= info->mouse.y / info->mouse.nb_zoom;
-			*zoom /= 1.5;
-			*i_max /= 1.12;
+			*zoom /= FACTOR_ZOOM;
+			*i_max /= FACTOR_ZOOM - 0.38;
 			info->mouse.nb_zoom--;
 		}
 		else
@@ -124,7 +125,7 @@ void		ft_mandelbrot(t_hook_info *info)
 	p = ft_make_pt(0, 0);
 	max = ft_make_pt(0, 0);
 	min = ft_make_pt(0, 0);
-	ft_edit_zoom(&zoom, &i_max, info->keycode, info);
+	ft_edit_zoom(&zoom, &i_max, info);
 	ft_edit_reset(&zoom, &i_max, info);
 
 	printf("mouse x : %ld\nmouse y : %ld\n\n", info->mouse.px, info->mouse.py);
