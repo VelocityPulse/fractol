@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/05 21:12:44 by                  ###   ########.fr       */
+/*   Updated: 2016/03/07 13:43:13 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void		ft_edit_reset(double *zoom, double *i_max, t_hook_info *info)
 
 void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 {
-
 	if (info->keycode == 24) // +
 	{
 		if (info->mouse.button == 0)
@@ -73,8 +72,8 @@ void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 		{
 			info->mouse.px /= FACTOR_ZOOM;
 			info->mouse.py /= FACTOR_ZOOM;
-			info->mouse.px -= info->mouse.px / info->mouse.nb_zoom;
-			info->mouse.py -= info->mouse.py / info->mouse.nb_zoom;
+//			info->mouse.px -= info->mouse.px / info->mouse.nb_zoom;
+//			info->mouse.py -= info->mouse.py / info->mouse.nb_zoom;
 			*zoom /= FACTOR_ZOOM;
 			*i_max /= FACTOR_ZOOM - 0.38;
 			info->mouse.nb_zoom--;
@@ -85,7 +84,6 @@ void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 			info->mouse.py = 0;
 		}
 	}
-	printf("nb_zoom : %d\n", info->mouse.nb_zoom);
 }
 
 void		ft_mandelbrot(t_hook_info *info)
@@ -102,7 +100,7 @@ void		ft_mandelbrot(t_hook_info *info)
 	double	z_r;
 	double	z_i;
 	double	i;
-	static double	i_max = 70;
+	static double	i_max = 60;
 	double	tmp;
 	t_pt	p;
 	t_pt	min;
@@ -121,24 +119,11 @@ void		ft_mandelbrot(t_hook_info *info)
 	int		image_x = (x2 - x1) * zoom;
 	int		image_y = (y2 - y1) * zoom;
 
-	if (image_y > W_HEIGHT)
-	{
-		max.y = image_y - ((image_y - W_HEIGHT) / 2);
-		max.x = image_x - ((image_x - W_WIDTH) / 2);
-		min.y = (image_y - W_HEIGHT) / 2;
-		min.x = (image_x - W_WIDTH) / 2;
-	}
-	else
-	{
-		max.y = W_HEIGHT;
-		max.x = W_WIDTH;
-		min.y = 0;
-		min.x = 0;
-	}
-	if (image_x < W_WIDTH)
-		p.x = min.x;
-	else
-		p.x = 0;
+	max.y = image_y - ((image_y - W_HEIGHT) / 2);
+	max.x = image_x - ((image_x - W_WIDTH) / 2);
+	min.y = (image_y - W_HEIGHT) / 2;
+	min.x = (image_x - W_WIDTH) / 2;
+	p.x = 0;
 	index.x = min.x - 1;
 	while (++index.x < max.x)
 	{
