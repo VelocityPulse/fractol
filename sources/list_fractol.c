@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:58:17 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 15:59:01 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 16:06:46 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_list_mlx		*ft_free_list_mlx(t_list_mlx *begin)
 		temp = begin->next;
 		info = (t_hook_info *)begin->info;
 		ft_clear_mlx(info->current_mlx);
+		ft_memdel((void **)&info->f);
 		ft_memdel((void **)&info);
 		ft_memdel((void **)&begin);
 		begin = temp;
@@ -79,6 +80,7 @@ t_list_mlx		*ft_free_one_mlx_list(t_list_mlx *begin, int n)
 			parent->next = list->next;
 			info = (t_hook_info *)list->info;
 			ft_clear_mlx(info->current_mlx);
+			ft_memdel((void **)&info->f);
 			ft_memdel((void *)&info);
 			ft_memdel((void **)&list);
 			return (begin);
@@ -87,6 +89,7 @@ t_list_mlx		*ft_free_one_mlx_list(t_list_mlx *begin, int n)
 		{
 			info = (t_hook_info *)list->info;
 			ft_clear_mlx(info->current_mlx);
+			ft_memdel((void **)&info->f);
 			ft_memdel((void **)&info);
 			ft_memdel((void **)&parent->next);
 			return (begin);

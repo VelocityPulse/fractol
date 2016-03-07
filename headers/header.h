@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 15:33:35 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 16:29:26 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ typedef struct	s_fractal
 	double		tmp;
 	double		i;
 	double		i_max;
-	t_pt		p;
-	t_pt		f_max;
-	t_pt		f_min;
-	t_pt		f_index;
+	t_pt		max;
+	t_pt		min;
+	t_pt		index;
+	int			image_x;
+	int			image_y;
 }				t_fractal;
 
 typedef struct	s_mouse_info
@@ -68,6 +69,7 @@ typedef struct	s_hook_info
 	t_mlx			*current_mlx;
 	t_list_mlx		*l_mlx;
 	t_mouse_info	mouse;
+	t_fractal		*f;
 }				t_hook_info;
 
 void			ft_start(int ac, char **av);

@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 15:33:38 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 16:34:33 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,84 +103,69 @@ t_fractal		*ft_init_mandelbrot_fractal(void)
 	f->z_r = 0;
 	f->z_i = 0;
 	f->i = 0;
-	f->p = ft_make_pt(0, 0);
-	f->f_min = ft_make_pt(0, 0);
-	f->f_max = ft_make_pt(0, 0);
-	f->f_index = ft_make_pt(0, 0);
+	f->min = ft_make_pt(0, 0);
+	f->max = ft_make_pt(0, 0);
+	f->index = ft_make_pt(0, 0);
+	f->image_x = 0;
+	f->image_y = 0;
 	return (f);
 }
 
 void			ft_mandelbrot(t_hook_info *info)
 {
-	double	x1 = -2.1;
-	double	x2 = 0.6;
-	double	y1 = -1.2;
-	double	y2 = 1.2;
+	t_fractal	*f;
+	t_pt		p;
 
-	static double	zoom = 400;
-
-	double	c_r;
-	double	c_i;
-	double	z_r;
-	double	z_i;
-	double	i;
-	static double	i_max = 60;
-	double	tmp;
-	t_pt	p;
-	t_pt	min;
-	t_pt	max;
-	t_pt	index;
-
-
+	f = info->f;
 	ft_reset_image(info->current_mlx, 0);
 	p = ft_make_pt(0, 0);
-	max = ft_make_pt(0, 0);
-	min = ft_make_pt(0, 0);
-	ft_edit_zoom(&zoom, &i_max, info);
-	ft_edit_reset(&zoom, &i_max, info);
+	f->max = ft_make_pt(0, 0);
+	f->min = ft_make_pt(0, 0);
+	ft_edit_zoom(&f->zoom, &f->i_max, info);
+	ft_edit_reset(&f->zoom, &f->i_max, info);
 
 	printf("mouse x : %ld\nmouse y : %ld\n\n", info->mouse.px, info->mouse.py);
 
-	int		image_x = (x2 - x1) * zoom;
-	int		image_y = (y2 - y1) * zoom;
+	f->image_x = (f->x2 - f->x1) * f->zoom;
+	f->image_y = (f->y2 - f->y1) * f->zoom;
 
-	max.y = image_y - ((image_y - W_HEIGHT) / 2);
-	max.x = image_x - ((image_x - W_WIDTH) / 2);
-	min.y = (image_y - W_HEIGHT) / 2;
-	min.x = (image_x - W_WIDTH) / 2;
+	f->max.y = f->image_y - ((f->image_y - W_HEIGHT) / 2);
+	f->max.x = f->image_x - ((f->image_x - W_WIDTH) / 2);
+	f->min.y = (f->image_y - W_HEIGHT) / 2;
+	f->min.x = (f->image_x - W_WIDTH) / 2;
 	p.x = 0;
-	index.x = min.x - 1;
-	while (++index.x < max.x)
+	f->index.x = f->min.x - 1;
+	while (++f->index.x < f->max.x)
 	{
 		p.y = 0;
-		index.y = min.y - 1;
-		while (++index.y < max.y)
+		f->index.y = f->min.y - 1;
+		while (++f->index.y < f->max.y)
 		{
-			c_r = (double)(p.x + min.x + info->mouse.px) / zoom + x1;
-			c_i = (double)(p.y + min.y + info->mouse.py) / zoom + y1;
-			z_r = 0;
-			z_i = 0;
-			i = 0;
-			while ((z_r * z_r) + (z_i * z_i) < 4 && i < i_max)
+			f->c_r = (double)(p.x + f->min.x + info->mouse.px) / f->zoom + f->x1;
+			f->c_i = (double)(p.y + f->min.y + info->mouse.py) / f->zoom + f->y1;
+			f->z_r = 0;
+			f->z_i = 0;
+			f->i = 0;
+			while ((f->z_r * f->z_r) + (f->z_i * f->z_i) < 4 && f->i < f->i_max)
 			{
-				tmp = z_r;
-				z_r = z_r * z_r - z_i * z_i + c_r;
-				z_i = 2 * z_i * tmp + c_i;
-				i++;
+				f->tmp = f->z_r;
+				f->z_r = f->z_r * f->z_r - f->z_i * f->z_i + f->c_r;
+				f->z_i = 2 * f->z_i * f->tmp + f->c_i;
+				f->i++;
 			}
-			if (i >= i_max)
+			if (f->i >= f->i_max)
 			{
-				if (image_x > W_WIDTH)
+				if (f->image_x > W_WIDTH)
 					ft_draw_pixel(info->current_mlx, 0x555555, p);
 				else
 					ft_draw_pixel(info->current_mlx, 0x555555, p);
 			}
 			else
 			{
-				if (image_y > W_HEIGHT)
-					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, i * 255 / i_max), p);
+				if (f->image_y > W_HEIGHT)
+					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, f->i * 255 / f->i_max, f->i * 255 / f->i_max), p);
 				else
-					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, i * 255 / i_max), p);
+					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, f->i * 255 / f->i_max, f->i * 255 / f->i_max), p);
 			}
 			p.y++;
 		}
@@ -204,6 +189,7 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 	info->mouse.py = 0;
 	info->mouse.button = 0;
 	info->mouse.nb_zoom = 0;
+	info->f = ft_init_mandelbrot_fractal();
 	str2 = ft_itoa(i);
 	if (n == 1)
 		str1 = ft_strjoin("main : fract'ol Mandelbrot ", str2);
