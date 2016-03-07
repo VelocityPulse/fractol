@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 15:41:01 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/28 23:35:09 by                  ###   ########.fr       */
+/*   Updated: 2016/03/07 14:29:07 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_display_list(char *str)
 
 void	ft_start(int ac, char **av)
 {
-	t_fractol	*begin;
+	t_list_mlx	*begin;
 	int			i;
 
 	i = 1;

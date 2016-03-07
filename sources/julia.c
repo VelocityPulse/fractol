@@ -6,13 +6,13 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/25 11:40:41 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 14:34:02 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-int		key_hook_julia(int keycode, t_hook_info *info)
+int			key_hook_julia(int keycode, t_hook_info *info)
 {
 	ft_putstr("keyhook julia\n");
 	if (keycode == 53)
@@ -27,7 +27,7 @@ int		key_hook_julia(int keycode, t_hook_info *info)
 	return (0);
 }
 
-t_fractol	*ft_add_julia(int n, t_fractol *begin)
+t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
@@ -43,8 +43,8 @@ t_fractol	*ft_add_julia(int n, t_fractol *begin)
 		str1 = ft_strjoin("fract'ol Julia ", str2);
 	info->current_mlx = NULL;
 	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->current_mlx, str1);
-	begin = ft_add_list_fractol(begin, info->current_mlx, n);
-	info->l_fractol = begin;
+	begin = ft_add_list_mlx(begin, info->current_mlx, n);
+	info->l_mlx = begin;
 	mlx_hook(info->current_mlx->p_win, KeyPress, KeyPressMask, key_hook_julia, info);
 //	if (n > 1)
 //		ft_julia(info);

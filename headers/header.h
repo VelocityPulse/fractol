@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/05 21:12:42 by                  ###   ########.fr       */
+/*   Updated: 2016/03/07 14:32:46 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # define W_HEIGHT 750
 # define FACTOR_ZOOM 1.5
 
-typedef struct	s_fractol
+typedef struct	s_list_mlx
 {
 	int					n;
 	t_mlx				*mlx;
-	struct s_fractol	*next;
-}				t_fractol;
+	struct s_list_mlx	*next;
+}				t_list_mlx;
 
 typedef struct	s_mouse_info
 {
@@ -46,7 +46,7 @@ typedef struct	s_hook_info
 	int				n;
 	int				keycode;
 	t_mlx			*current_mlx;
-	t_fractol		*l_fractol;
+	t_list_mlx		*l_mlx;
 	t_mouse_info	mouse;
 }				t_hook_info;
 
@@ -54,14 +54,14 @@ void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
 void			ft_exit_one_fractol(t_hook_info *info);
 
-t_fractol		*ft_add_julia(int n, t_fractol *begin);
+t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin);
 void			ft_julia(t_hook_info *info);
-t_fractol		*ft_add_mandelbrot(int n, t_fractol *begin);
+t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin);
 void			ft_mandelbrot(t_hook_info *info);
 
-t_fractol		*ft_new_list_fractol(void);
-t_fractol		*ft_add_list_fractol(t_fractol *begin, t_mlx *mlx, int n);
-t_fractol		*ft_free_fractol_list(t_fractol *begin);
-t_fractol		*ft_free_one_fractol_list(t_fractol *begin, int n);
+t_list_mlx		*ft_new_list_mlx(void);
+t_list_mlx		*ft_add_list_mlx(t_list_mlx *begin, t_mlx *mlx, int n);
+t_list_mlx		*ft_free_list_mlx(t_list_mlx *begin);
+t_list_mlx		*ft_free_one_mlx_list(t_list_mlx *begin, int n);
 
 #endif

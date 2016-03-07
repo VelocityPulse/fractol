@@ -6,13 +6,13 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 13:43:13 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 14:33:42 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-int		mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
+int				mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 {
 	info->mouse.button = 1;
 	info->mouse.px += ((x * 2 - W_WIDTH) / 2);
@@ -22,11 +22,11 @@ int		mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 	info->keycode = 24;
 	ft_mandelbrot(info);
 	info->mouse.button = 0;
-	button = 0;
+	(void)button;
 	return (1);
 }
 
-int		key_hook_mandelbrot(int keycode, t_hook_info *info)
+int				key_hook_mandelbrot(int keycode, t_hook_info *info)
 {
 	info->keycode = keycode;
 	if (keycode == 53)
@@ -41,7 +41,7 @@ int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 	return (1);
 }
 
-void		ft_edit_reset(double *zoom, double *i_max, t_hook_info *info)
+void			ft_edit_reset(double *zoom, double *i_max, t_hook_info *info)
 {
 	if (info->keycode == 49)
 	{
@@ -53,7 +53,7 @@ void		ft_edit_reset(double *zoom, double *i_max, t_hook_info *info)
 	}
 }
 
-void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
+void			ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 {
 	if (info->keycode == 24) // +
 	{
@@ -86,7 +86,7 @@ void		ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 	}
 }
 
-void		ft_mandelbrot(t_hook_info *info)
+void			ft_mandelbrot(t_hook_info *info)
 {
 	static double	x1 = -2.1;
 	static double	x2 = 0.6;
@@ -106,6 +106,7 @@ void		ft_mandelbrot(t_hook_info *info)
 	t_pt	min;
 	t_pt	max;
 	t_pt	index;
+
 
 	ft_reset_image(info->current_mlx, 0);
 	p = ft_make_pt(0, 0);
@@ -127,21 +128,12 @@ void		ft_mandelbrot(t_hook_info *info)
 	index.x = min.x - 1;
 	while (++index.x < max.x)
 	{
-		if (image_y < W_HEIGHT)
-			p.y = min.y;
-		else
-			p.y = 0;
+		p.y = 0;
 		index.y = min.y - 1;
 		while (++index.y < max.y)
 		{
-			if (image_x < W_WIDTH)
-				c_r = (double)(p.x - min.x + info->mouse.px) / zoom + x1;
-			else
-				c_r = (double)(p.x + min.x + info->mouse.px) / zoom + x1;
-			if (image_y < W_HEIGHT)
-				c_i = (double)(p.y - min.y + info->mouse.py) / zoom + y1;
-			else
-				c_i = (double)(p.y + min.y + info->mouse.py) / zoom + y1;
+			c_r = (double)(p.x + min.x + info->mouse.px) / zoom + x1;
+			c_i = (double)(p.y + min.y + info->mouse.py) / zoom + y1;
 			z_r = 0;
 			z_i = 0;
 			i = 0;
@@ -175,7 +167,7 @@ void		ft_mandelbrot(t_hook_info *info)
 	ft_flush_image(info->current_mlx);
 }
 
-t_fractol	*ft_add_mandelbrot(int n, t_fractol *begin)
+t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
@@ -196,8 +188,8 @@ t_fractol	*ft_add_mandelbrot(int n, t_fractol *begin)
 		str1 = ft_strjoin("fract'ol Mandelbrot ", str2);
 	info->current_mlx = NULL;
 	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->current_mlx, str1);
-	begin = ft_add_list_fractol(begin, info->current_mlx, n);
-	info->l_fractol = begin;
+	begin = ft_add_list_mlx(begin, info->current_mlx, n);
+	info->l_mlx = begin;
 	mlx_key_hook(info->current_mlx->p_win, key_hook_mandelbrot, info);
 	mlx_mouse_hook(info->current_mlx->p_win, mouse_hook_mandelbrot, info);
 	if (n > 1)
