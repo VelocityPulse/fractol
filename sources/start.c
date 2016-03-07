@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 15:41:01 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 14:29:07 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 15:41:15 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_start(int ac, char **av)
 				ft_display_list(av[i]);
 			i++;
 		}
-		mlx_loop(begin->mlx->p_mlx);
+		mlx_loop(((t_hook_info *)begin->info)->current_mlx);
 	}
 	else
 		ft_display_list(NULL);

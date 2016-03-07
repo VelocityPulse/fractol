@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 14:33:42 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 15:33:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int				mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 {
+	mlx_do_sync(info->current_mlx);
 	info->mouse.button = 1;
 	info->mouse.px += ((x * 2 - W_WIDTH) / 2);
 	info->mouse.py += ((y * 2 - W_HEIGHT) / 2);
@@ -29,6 +30,8 @@ int				mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
 int				key_hook_mandelbrot(int keycode, t_hook_info *info)
 {
 	info->keycode = keycode;
+	mlx_do_sync(info->current_mlx);
+
 	if (keycode == 53)
 	{
 		if (info->n == 1)
@@ -72,8 +75,6 @@ void			ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 		{
 			info->mouse.px /= FACTOR_ZOOM;
 			info->mouse.py /= FACTOR_ZOOM;
-//			info->mouse.px -= info->mouse.px / info->mouse.nb_zoom;
-//			info->mouse.py -= info->mouse.py / info->mouse.nb_zoom;
 			*zoom /= FACTOR_ZOOM;
 			*i_max /= FACTOR_ZOOM - 0.38;
 			info->mouse.nb_zoom--;
@@ -86,12 +87,35 @@ void			ft_edit_zoom(double *zoom, double *i_max, t_hook_info *info)
 	}
 }
 
+t_fractal		*ft_init_mandelbrot_fractal(void)
+{
+	t_fractal	*f;
+
+	f = (t_fractal *)ft_memalloc(sizeof(t_fractal));
+	f->x1 = -2.1;
+	f->x2 = 0.6;
+	f->y1 = -1.2;
+	f->y2 = 1.2;
+	f->zoom = 400;
+	f->i_max = 60;
+	f->c_r = 0;
+	f->c_i = 0;
+	f->z_r = 0;
+	f->z_i = 0;
+	f->i = 0;
+	f->p = ft_make_pt(0, 0);
+	f->f_min = ft_make_pt(0, 0);
+	f->f_max = ft_make_pt(0, 0);
+	f->f_index = ft_make_pt(0, 0);
+	return (f);
+}
+
 void			ft_mandelbrot(t_hook_info *info)
 {
-	static double	x1 = -2.1;
-	static double	x2 = 0.6;
-	static double	y1 = -1.2;
-	static double	y2 = 1.2;
+	double	x1 = -2.1;
+	double	x2 = 0.6;
+	double	y1 = -1.2;
+	double	y2 = 1.2;
 
 	static double	zoom = 400;
 
@@ -163,7 +187,6 @@ void			ft_mandelbrot(t_hook_info *info)
 		p.x++;
 	}
 	ft_draw_pixel(info->current_mlx, 0x00ffff, ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
-	mlx_do_sync(info->current_mlx);
 	ft_flush_image(info->current_mlx);
 }
 
@@ -188,7 +211,7 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 		str1 = ft_strjoin("fract'ol Mandelbrot ", str2);
 	info->current_mlx = NULL;
 	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->current_mlx, str1);
-	begin = ft_add_list_mlx(begin, info->current_mlx, n);
+	begin = ft_add_list_mlx(begin, info, n);
 	info->l_mlx = begin;
 	mlx_key_hook(info->current_mlx->p_win, key_hook_mandelbrot, info);
 	mlx_mouse_hook(info->current_mlx->p_win, mouse_hook_mandelbrot, info);

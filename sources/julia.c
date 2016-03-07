@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 14:34:02 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 15:33:07 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin)
 		str1 = ft_strjoin("fract'ol Julia ", str2);
 	info->current_mlx = NULL;
 	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->current_mlx, str1);
-	begin = ft_add_list_mlx(begin, info->current_mlx, n);
+	begin = ft_add_list_mlx(begin, info, n);
 	info->l_mlx = begin;
 	mlx_hook(info->current_mlx->p_win, KeyPress, KeyPressMask, key_hook_julia, info);
 //	if (n > 1)

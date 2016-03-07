@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 14:32:46 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 15:33:35 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,29 @@
 typedef struct	s_list_mlx
 {
 	int					n;
-	t_mlx				*mlx;
+	void				*info;
 	struct s_list_mlx	*next;
 }				t_list_mlx;
+
+typedef struct	s_fractal
+{
+	double		x1;
+	double		x2;
+	double		y1;
+	double		y2;
+	double		zoom;
+	double		c_r;
+	double		c_i;
+	double		z_r;
+	double		z_i;
+	double		tmp;
+	double		i;
+	double		i_max;
+	t_pt		p;
+	t_pt		f_max;
+	t_pt		f_min;
+	t_pt		f_index;
+}				t_fractal;
 
 typedef struct	s_mouse_info
 {
@@ -60,7 +80,7 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin);
 void			ft_mandelbrot(t_hook_info *info);
 
 t_list_mlx		*ft_new_list_mlx(void);
-t_list_mlx		*ft_add_list_mlx(t_list_mlx *begin, t_mlx *mlx, int n);
+t_list_mlx		*ft_add_list_mlx(t_list_mlx *begin, t_hook_info *info, int n);
 t_list_mlx		*ft_free_list_mlx(t_list_mlx *begin);
 t_list_mlx		*ft_free_one_mlx_list(t_list_mlx *begin, int n);
 
