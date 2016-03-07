@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 16:29:26 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 17:23:22 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,7 @@ typedef struct	s_fractal
 	double		y1;
 	double		y2;
 	double		zoom;
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
-	double		tmp;
-	double		i;
 	double		i_max;
-	t_pt		max;
-	t_pt		min;
-	t_pt		index;
 	int			image_x;
 	int			image_y;
 }				t_fractal;

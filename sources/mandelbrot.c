@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 16:34:33 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/07 17:30:30 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,6 @@ t_fractal		*ft_init_mandelbrot_fractal(void)
 	f->y2 = 1.2;
 	f->zoom = 400;
 	f->i_max = 60;
-	f->c_r = 0;
-	f->c_i = 0;
-	f->z_r = 0;
-	f->z_i = 0;
-	f->i = 0;
-	f->min = ft_make_pt(0, 0);
-	f->max = ft_make_pt(0, 0);
-	f->index = ft_make_pt(0, 0);
-	f->image_x = 0;
-	f->image_y = 0;
 	return (f);
 }
 
@@ -115,58 +105,58 @@ void			ft_mandelbrot(t_hook_info *info)
 {
 	t_fractal	*f;
 	t_pt		p;
+	double		c_r;
+	double		c_i;
+	double		z_r;
+	double		z_i;
+	double		tmp;
+	t_pt		min;
+	t_pt		max;
+	t_pt		index;
+	int			i;
+	double		i_max;
+	double		zoom;
+
 
 	f = info->f;
 	ft_reset_image(info->current_mlx, 0);
 	p = ft_make_pt(0, 0);
-	f->max = ft_make_pt(0, 0);
-	f->min = ft_make_pt(0, 0);
 	ft_edit_zoom(&f->zoom, &f->i_max, info);
 	ft_edit_reset(&f->zoom, &f->i_max, info);
-
+	i_max = f->i_max;
+	zoom = f->zoom;
 	printf("mouse x : %ld\nmouse y : %ld\n\n", info->mouse.px, info->mouse.py);
 
 	f->image_x = (f->x2 - f->x1) * f->zoom;
 	f->image_y = (f->y2 - f->y1) * f->zoom;
 
-	f->max.y = f->image_y - ((f->image_y - W_HEIGHT) / 2);
-	f->max.x = f->image_x - ((f->image_x - W_WIDTH) / 2);
-	f->min.y = (f->image_y - W_HEIGHT) / 2;
-	f->min.x = (f->image_x - W_WIDTH) / 2;
+	max.y = f->image_y - ((f->image_y - W_HEIGHT) / 2);
+	max.x = f->image_x - ((f->image_x - W_WIDTH) / 2);
+	min.y = (f->image_y - W_HEIGHT) / 2;
+	min.x = (f->image_x - W_WIDTH) / 2;
 	p.x = 0;
-	f->index.x = f->min.x - 1;
-	while (++f->index.x < f->max.x)
+	index.x = min.x - 1;
+	while (++index.x < max.x)
 	{
 		p.y = 0;
-		f->index.y = f->min.y - 1;
-		while (++f->index.y < f->max.y)
+		index.y = min.y - 1;
+		while (++index.y < max.y)
 		{
-			f->c_r = (double)(p.x + f->min.x + info->mouse.px) / f->zoom + f->x1;
-			f->c_i = (double)(p.y + f->min.y + info->mouse.py) / f->zoom + f->y1;
-			f->z_r = 0;
-			f->z_i = 0;
-			f->i = 0;
-			while ((f->z_r * f->z_r) + (f->z_i * f->z_i) < 4 && f->i < f->i_max)
+			c_r = (double)(p.x + min.x + info->mouse.px) / zoom + f->x1;
+			c_i = (double)(p.y + min.y + info->mouse.py) / zoom + f->y1;
+			z_r = 0;
+			z_i = 0;
+			i = -1;
+			while ((z_r * z_r) + (z_i * z_i) < 4 && ++i < i_max)
 			{
-				f->tmp = f->z_r;
-				f->z_r = f->z_r * f->z_r - f->z_i * f->z_i + f->c_r;
-				f->z_i = 2 * f->z_i * f->tmp + f->c_i;
-				f->i++;
+				tmp = z_r;
+				z_r = z_r * z_r - z_i * z_i + c_r;
+				z_i = 2 * z_i * tmp + c_i;
 			}
-			if (f->i >= f->i_max)
-			{
-				if (f->image_x > W_WIDTH)
-					ft_draw_pixel(info->current_mlx, 0x555555, p);
-				else
-					ft_draw_pixel(info->current_mlx, 0x555555, p);
-			}
+			if (i >= f->i_max)
+				ft_draw_pixel(info->current_mlx, 0x555555, p);
 			else
-			{
-				if (f->image_y > W_HEIGHT)
-					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, f->i * 255 / f->i_max, f->i * 255 / f->i_max), p);
-				else
-					ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, f->i * 255 / f->i_max, f->i * 255 / f->i_max), p);
-			}
+				ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, i * 255 / i_max, i * 255 / i_max), p);
 			p.y++;
 		}
 		p.x++;
