@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/03/09 13:35:10 by                  ###   ########.fr       *#
+#*   Updated: 2016/03/10 00:27:22 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC =			./sources/main.c \
 				./sources/list_fractol.c \
 				./sources/start.c \
 				./sources/exit.c \
-				./sources/mandelbrot_core.c
+				./sources/mandelbrot_core.c \
+				./sources/mandelbrot_hook.c
 
 OBJS =			main.o \
 				julia.o \
@@ -26,7 +27,8 @@ OBJS =			main.o \
 				list_fractol.o \
 				start.o \
 				exit.o \
-				mandelbrot_core.o
+				mandelbrot_core.o \
+				mandelbrot_hook.o
 
 DRAW =			./draw/draw.a
 

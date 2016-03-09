@@ -6,43 +6,11 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/09 14:45:33 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 00:26:30 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
-
-int				mouse_hook_mandelbrot(int button, int x, int y, t_hook_info *info)
-{
-	mlx_do_sync(info->current_mlx);
-	info->mouse.button = 1;
-	info->mouse.pos.x += ((x * 2 - W_WIDTH) / 2);
-	info->mouse.pos.y += ((y * 2 - W_HEIGHT) / 2);
-	info->mouse.pos.x *= FACTOR_ZOOM;
-	info->mouse.pos.y *= FACTOR_ZOOM;
-	info->keycode = 24;
-	ft_mandelbrot(info);
-	info->mouse.button = 0;
-	(void)button;
-	return (1);
-}
-
-int				key_hook_mandelbrot(int keycode, t_hook_info *info)
-{
-	info->keycode = keycode;
-	mlx_do_sync(info->current_mlx);
-
-	if (keycode == 53)
-	{
-		if (info->n == 1)
-			ft_exit_all_fractol(info);
-		else
-			ft_exit_one_fractol(info);
-	}
-	else
-		ft_mandelbrot(info);
-	return (1);
-}
 
 void			ft_edit_reset(double *zoom, int *i_max, t_hook_info *info)
 {

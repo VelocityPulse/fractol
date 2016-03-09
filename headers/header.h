@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/09 14:44:32 by                  ###   ########.fr       */
+/*   Updated: 2016/03/09 15:56:59 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct	s_hook_info
 	t_mouse_info	mouse;
 	t_fractal		*f;
 }				t_hook_info;
+
+int				mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info);
+int				key_hook_mandelbrot(int keycode, t_hook_info *info);
 
 void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
