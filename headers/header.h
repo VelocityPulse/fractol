@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 17:23:22 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/09 14:44:32 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ typedef struct	s_list_mlx
 	struct s_list_mlx	*next;
 }				t_list_mlx;
 
+typedef struct	s_ptll
+{
+	long long	x;
+	long long	y;
+}				t_ptll;
+
 typedef struct	s_fractal
 {
 	double		x1;
@@ -40,16 +46,16 @@ typedef struct	s_fractal
 	double		y1;
 	double		y2;
 	double		zoom;
-	double		i_max;
-	int			image_x;
-	int			image_y;
+	int			i;
+	int			i_max;
+	t_ptll		min;
+	t_ptll 		max;
 }				t_fractal;
 
 typedef struct	s_mouse_info
 {
 	int			button;
-	long int	px;
-	long int	py;
+	t_ptll		pos;
 	int			nb_zoom;
 }				t_mouse_info;
 
@@ -69,8 +75,11 @@ void			ft_exit_one_fractol(t_hook_info *info);
 
 t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin);
 void			ft_julia(t_hook_info *info);
+
 t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin);
 void			ft_mandelbrot(t_hook_info *info);
+void			ft_mandelbrot_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
+void			ft_mandelbrot_frame_init(t_fractal *f);
 
 t_list_mlx		*ft_new_list_mlx(void);
 t_list_mlx		*ft_add_list_mlx(t_list_mlx *begin, t_hook_info *info, int n);
