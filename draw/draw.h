@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 11:41:53 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/16 13:56:46 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 22:59:58 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "../headers/libft.h"
 # include "../headers/mlx.h"
 
-t_mlx		*ft_mlx_init(int width, int height, t_mlx *mlx, char *name);
+t_mlx		*ft_mlx_init(int width, int height, char *name);
 void		ft_clear_mlx(t_mlx *mlx);
 void		ft_new_image(t_mlx *mlx);
 void		ft_flush_image(t_mlx *x);

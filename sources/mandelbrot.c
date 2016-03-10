@@ -6,13 +6,13 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 15:32:17 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 23:37:16 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-t_fractal		*ft_init_mandelbrot_fractal(void)
+static t_fractal	*ft_init_mandelbrot_fractal(void)
 {
 	t_fractal	*f;
 
@@ -21,19 +21,19 @@ t_fractal		*ft_init_mandelbrot_fractal(void)
 	f->x2 = 0.6;
 	f->y1 = -1.2;
 	f->y2 = 1.2;
-	f->min.x = 0;
-	f->min.y = 0;
-	f->max.x = 0;
-	f->max.y = 0;
+	f->min = ft_make_ptll(0, 0);
+	f->max = ft_make_ptll(0, 0);
 	f->zoom = 400;
 	f->i_max = 60;
+	f->i = 0;
+	f->pos = ft_make_ptll(0, 0);
 	f->nb_zoom = 0;
 	f->color_value1 = 21;
 	f->color_value2 = 21;
 	return (f);
 }
 
-void			ft_mandelbrot(t_hook_info *info)
+void				ft_mandelbrot(t_hook_info *info)
 {
 	t_fractal	*f;
 	t_pt		p;
@@ -41,12 +41,8 @@ void			ft_mandelbrot(t_hook_info *info)
 
 	f = info->f;
 	ft_reset_image(info->current_mlx, 0);
-	p = ft_make_pt(0, 0);
-	ft_edit_reset(info);
-	ft_edit_zoom(info);
-	ft_edit_pos(info);
-	ft_edit_imax(info);
-	ft_edit_color(info);
+	ft_edit_reset_mandelbrot(info);
+	ft_edit_control(info);
 	ft_mandelbrot_frame_init(f);
 	p.x = 0;
 	index.x = f->min.x - 1;
@@ -66,7 +62,7 @@ void			ft_mandelbrot(t_hook_info *info)
 	ft_flush_image(info->current_mlx);
 }
 
-t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
+t_list_mlx			*ft_add_mandelbrot(int n, t_list_mlx *begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
@@ -82,12 +78,10 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 		str1 = ft_strjoin("main : fract'ol Mandelbrot ", str2);
 	else
 		str1 = ft_strjoin("fract'ol Mandelbrot ", str2);
-	info->current_mlx = NULL;
-	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, info->current_mlx, str1);
+	info->current_mlx = ft_mlx_init(W_WIDTH, W_HEIGHT, str1);
 	begin = ft_add_list_mlx(begin, info, n);
 	info->l_mlx = begin;
-	mlx_key_hook(info->current_mlx->p_win, key_hook_mandelbrot, info);
-	mlx_mouse_hook(info->current_mlx->p_win, mouse_hook_mandelbrot, info);
+	ft_start_mandelbrot_hook(info);
 	if (n > 1)
 		ft_mandelbrot(info);
 	i++;

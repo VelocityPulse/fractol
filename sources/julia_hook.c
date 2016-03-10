@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot_hook.c                                  :+:      :+:    :+:   */
+/*   julia_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/09 15:00:38 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 23:22:41 by                  ###   ########.fr       */
+/*   Created: 2016/03/10 22:05:08 by                   #+#    #+#             */
+/*   Updated: 2016/03/10 23:39:49 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-void	ft_start_mandelbrot_hook(t_hook_info *info)
+void	ft_start_julia_hook(t_hook_info *info)
 {
 	t_mlx	*mlx;
 
 	mlx = info->current_mlx;
-	mlx_hook(mlx->p_win, KeyPress, KeyPressMask, key_hook_mandelbrot, info);
-	mlx_mouse_hook(mlx->p_win, mouse_hook_mandelbrot, info);
+	mlx_hook(mlx->p_win, KeyPress, KeyPressMask, key_hook_julia, info);
+	mlx_mouse_hook(mlx->p_win, mouse_hook_julia, info);
 }
 
-int		mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info)
+int		mouse_hook_julia(int btn, int x, int y, t_hook_info *info)
 {
 	info->mouse.button = btn;
 	info->mouse.pos = ft_make_ptll(x, y);
@@ -29,18 +29,13 @@ int		mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info)
 		info->keycode = 24;
 	else if (btn == 4 || btn == 2)
 		info->keycode = 27;
-	ft_mandelbrot(info);
+	ft_julia(info);
 	info->mouse.button = -1;
 	info->keycode = -1;
 	return (0);
 }
 
-/*
- * btn == 5 scroll +
- * btn == 4 scroll -
-*/
-
-int		key_hook_mandelbrot(int keycode, t_hook_info *info)
+int		key_hook_julia(int keycode, t_hook_info *info)
 {
 	info->keycode = keycode;
 	if (keycode == 53)
@@ -51,6 +46,6 @@ int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 			ft_exit_one_fractol(info);
 	}
 	else
-		ft_mandelbrot(info);
+		ft_julia(info);
 	return (1);
 }

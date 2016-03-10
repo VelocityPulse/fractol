@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 15:30:25 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 23:35:17 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,25 @@ typedef struct	s_hook_info
 	t_fractal		*f;
 }				t_hook_info;
 
+
+void			ft_start_mandelbrot_hook(t_hook_info *info);
 int				mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info);
 int				key_hook_mandelbrot(int keycode, t_hook_info *info);
+
+void			ft_start_julia_hook(t_hook_info *info);
+int				key_hook_julia(int keycode, t_hook_info *info);
+int				mouse_hook_julia(int btn, int x, int y, t_hook_info *info);
 
 void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
 void			ft_exit_one_fractol(t_hook_info *info);
 
+void			ft_edit_control(t_hook_info *info);
 void			ft_edit_zoom(t_hook_info *info);
 void			ft_calc_pos(t_hook_info *info, t_ptll mouse_pos);
 void			ft_edit_imax(t_hook_info *info);
-void			ft_edit_reset(t_hook_info *info);
+void			ft_edit_reset_mandelbrot(t_hook_info *info);
+void			ft_edit_reset_julia(t_hook_info *info);
 void			ft_edit_pos(t_hook_info *info);
 void			ft_edit_color(t_hook_info *info);
 
@@ -91,6 +99,7 @@ void			ft_trace_color(t_hook_info *info, t_pt px);
 
 t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin);
 void			ft_julia(t_hook_info *info);
+void			ft_julia_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
 
 t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin);
 void			ft_mandelbrot(t_hook_info *info);

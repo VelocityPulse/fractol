@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/03/10 15:23:10 by                  ###   ########.fr       *#
+#*   Updated: 2016/03/10 22:32:05 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,16 @@ SRC =			./sources/main.c \
 				./sources/exit.c \
 				./sources/mandelbrot_core.c \
 				./sources/mandelbrot_hook.c \
+				./sources/control_edit.c \
 				./sources/edit_zoom.c \
 				./sources/edit_imax.c \
 				./sources/edit_reset.c \
 				./sources/edit_pos.c \
 				./sources/edit_color.c \
 				./sources/calc_color.c \
-				./sources/trace_color.c
+				./sources/trace_color.c \
+				./sources/julia_hook.c \
+				./sources/julia_core.c
 
 OBJS =			main.o \
 				julia.o \
@@ -36,13 +39,16 @@ OBJS =			main.o \
 				exit.o \
 				mandelbrot_core.o \
 				mandelbrot_hook.o \
+				control_edit.o \
 				edit_zoom.o \
 				edit_imax.o \
 				edit_reset.o \
 				edit_pos.o \
 				edit_color.o \
 				calc_color.o \
-				trace_color.o
+				trace_color.o \
+				julia_hook.o \
+				julia_core.o
 
 DRAW =			./draw/draw.a
 
