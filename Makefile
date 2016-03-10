@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/03/10 00:27:22 by                  ###   ########.fr       *#
+#*   Updated: 2016/03/10 10:29:17 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,12 +60,16 @@ $(LIBFT):
 $(DRAW):
 	make -C ./draw/
 
+$(LIBMLX):
+	make -C ./libmlx/
+
 clean:
 	$(RM) $(OBJS)
 	make clean -C ./draw/
 	make clean -C ./libft/
+	make clean -C ./libmlx/
 
 fclean: clean
-	$(RM) $(NAME) $(LIBFT) $(DRAW)
+	$(RM) $(NAME) $(LIBFT) $(DRAW) $(LIBMLX)
 
 re: fclean all
