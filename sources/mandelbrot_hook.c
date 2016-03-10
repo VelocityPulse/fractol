@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 15:00:38 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 00:27:36 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 11:24:20 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 int		mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info)
 {
-	(void)btn;
-	info->mouse.button = 1;
-	info->mouse.pos.x += ((x * 2 - W_WIDTH) / 2);
-	info->mouse.pos.y += ((y * 2 - W_HEIGHT) / 2);
-	info->mouse.pos.x *= FACTOR_ZOOM;
-	info->mouse.pos.y *= FACTOR_ZOOM;
-	info->keycode = 24;
+	info->mouse.button = btn;
+	info->mouse.pos.x = x;
+	info->mouse.pos.y = y;
+	if (btn == 5 || btn == 1)
+		info->keycode = 24;
+	else if (btn == 4 || btn == 2)
+		info->keycode = 27;
 	ft_mandelbrot(info);
-	info->mouse.button = 0;
+	info->mouse.button = -1;
+	info->keycode = -1;
 	return (0);
 }
+
+// btn == 5 +
+// btn == 4 -
 
 int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 {

@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 00:26:30 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 11:31:24 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,38 +20,7 @@ void			ft_edit_reset(double *zoom, int *i_max, t_hook_info *info)
 		*i_max = 70;
 		info->mouse.pos.x = 0;
 		info->mouse.pos.y = 0;
-		info->mouse.nb_zoom = 0;
-	}
-}
-
-void			ft_edit_zoom(double *zoom, int *i_max, t_hook_info *info)
-{
-	if (info->keycode == 24) // +
-	{
-		if (info->mouse.button == 0)
-		{
-			info->mouse.pos.x *= FACTOR_ZOOM;
-			info->mouse.pos.y *= FACTOR_ZOOM;
-		}
-		*zoom *= FACTOR_ZOOM;
-		*i_max *= FACTOR_ZOOM - 0.38;
-		info->mouse.nb_zoom++;
-	}
-	else if (info->keycode == 27) // -
-	{
-		if (info->mouse.nb_zoom)
-		{
-			info->mouse.pos.x /= FACTOR_ZOOM;
-			info->mouse.pos.y /= FACTOR_ZOOM;
-			*zoom /= FACTOR_ZOOM;
-			*i_max /= FACTOR_ZOOM - 0.38;
-			info->mouse.nb_zoom--;
-		}
-		else
-		{
-			info->mouse.pos.x = 0;
-			info->mouse.pos.y = 0;
-		}
+		info->f->nb_zoom = 0;
 	}
 }
 
@@ -70,6 +39,7 @@ t_fractal		*ft_init_mandelbrot_fractal(void)
 	f->max.y = 0;
 	f->zoom = 400;
 	f->i_max = 60;
+	f->nb_zoom = 0;
 	return (f);
 }
 
@@ -93,7 +63,7 @@ void			ft_mandelbrot(t_hook_info *info)
 		index.y = f->min.y - 1;
 		while (++index.y < f->max.y)
 		{
-			ft_mandelbrot_iter(f, info->mouse.pos, p, ft_make_pt(-1, f->i_max));
+			ft_mandelbrot_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
 			if (f->i >= f->i_max)
 				ft_draw_pixel(info->current_mlx, 0x555555, p);
 			else
@@ -124,7 +94,6 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 	info->mouse.pos.x = 0;
 	info->mouse.pos.y = 0;
 	info->mouse.button = 0;
-	info->mouse.nb_zoom = 0;
 	info->f = ft_init_mandelbrot_fractal();
 	str2 = ft_itoa(i);
 	if (n == 1)
