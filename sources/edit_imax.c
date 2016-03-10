@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:37:23 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 12:17:32 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 13:16:45 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	ft_edit_imax(t_hook_info *info)
 {
 	if (info->keycode == 30)
-		info->f->i_max *= FACTOR_ZOOM - 0.38;
-	else if (info->keycode == 33)
-		info->f->i_max /= FACTOR_ZOOM - 0.38;
+		info->f->i_max = llround((double)info->f->i_max * FACTOR_ITER);
+	else if (info->keycode == 33 && info->f->i_max > 10)
+		info->f->i_max = llround((double)info->f->i_max / FACTOR_ITER);
 }
 
 /*

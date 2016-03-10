@@ -6,13 +6,13 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 10:31:10 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 11:53:55 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 13:13:36 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-static void		ft_edit_pos(t_hook_info *info, t_ptll mouse_pos)
+void		ft_calc_pos(t_hook_info *info, t_ptll mouse_pos)
 {
 	info->f->pos.x += (mouse_pos.x * 2 - W_WIDTH) / 2;
 	info->f->pos.y += (mouse_pos.y * 2 - W_HEIGHT) / 2;
@@ -23,11 +23,11 @@ void			ft_edit_zoom(t_hook_info *info)
 	if (info->keycode == 24) // +
 	{
 		if (info->mouse.button == 5 || info->mouse.button == 1)
-			ft_edit_pos(info, info->mouse.pos);
+			ft_calc_pos(info, info->mouse.pos);
 		info->f->pos.x *= FACTOR_ZOOM;
 		info->f->pos.y *= FACTOR_ZOOM;
 		info->f->zoom *= FACTOR_ZOOM;
-		info->f->i_max *= FACTOR_ZOOM - 0.38;
+		info->f->i_max *= FACTOR_ITER;
 		info->f->nb_zoom++;
 	}
 	else if (info->keycode == 27)
@@ -38,11 +38,11 @@ void			ft_edit_zoom(t_hook_info *info)
 			return ;
 		}
 		if (info->mouse.button == 4 || info->mouse.button == 2)
-			ft_edit_pos(info, info->mouse.pos);
+			ft_calc_pos(info, info->mouse.pos);
 		info->f->pos.x /= FACTOR_ZOOM;
 		info->f->pos.y /= FACTOR_ZOOM;
 		info->f->zoom /= FACTOR_ZOOM;
-		info->f->i_max /= FACTOR_ZOOM - 0.38;
+		info->f->i_max /= FACTOR_ITER;
 		info->f->nb_zoom--;
 	}
 }

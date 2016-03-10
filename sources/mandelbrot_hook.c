@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 15:00:38 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 12:16:52 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 13:38:10 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info)
 int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 {
 	info->keycode = keycode;
-//	printf("%d\n", keycode);
+	printf("%d\n", keycode);
 	if (keycode == 53)
 	{
 		if (info->n == 1)

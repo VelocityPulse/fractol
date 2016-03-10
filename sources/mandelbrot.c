@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 12:16:08 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 14:04:45 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_fractal		*ft_init_mandelbrot_fractal(void)
 	f->zoom = 400;
 	f->i_max = 60;
 	f->nb_zoom = 0;
+	f->color_value1 = 20;
+	f->color_value2 = 20;
 	return (f);
 }
 
@@ -42,7 +44,9 @@ void			ft_mandelbrot(t_hook_info *info)
 	p = ft_make_pt(0, 0);
 	ft_edit_reset(info);
 	ft_edit_zoom(info);
+	ft_edit_pos(info);
 	ft_edit_imax(info);
+	ft_edit_color(info);
 	ft_mandelbrot_frame_init(f);
 	p.x = 0;
 	index.x = f->min.x - 1;
@@ -54,7 +58,7 @@ void			ft_mandelbrot(t_hook_info *info)
 		{
 			ft_mandelbrot_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
 			if (f->i >= f->i_max)
-				ft_draw_pixel(info->current_mlx, 0x555555, p);
+				ft_draw_pixel(info->current_mlx, 0x334646, p);
 			else
 				ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, f->i * 255 / f->i_max, f->i * 255 / f->i_max), p);
 			p.y++;
