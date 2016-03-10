@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 14:00:13 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 15:30:25 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define W_HEIGHT 750
 # define FACTOR_ZOOM 1.5
 # define FACTOR_ITER 1.12
-# define COLOR_INTERVAL 30
+# define COLOR_INTERVAL 40
 
 typedef struct	s_list_mlx
 {
@@ -50,8 +50,8 @@ typedef struct	s_fractal
 	t_ptll		pos;
 	int			color_value1;
 	int			color_value2;
-	t_rgb		color_max1;
-	t_rgb		color_max2;
+	t_rgb		rgb_max1;
+	t_rgb		rgb_max2;
 }				t_fractal;
 
 typedef struct	s_mouse_info
@@ -83,6 +83,11 @@ void			ft_edit_imax(t_hook_info *info);
 void			ft_edit_reset(t_hook_info *info);
 void			ft_edit_pos(t_hook_info *info);
 void			ft_edit_color(t_hook_info *info);
+
+void			ft_calc_color(t_hook_info *info);
+void			ft_calc_color1(t_hook_info *info);
+void			ft_calc_color2(t_hook_info *info);
+void			ft_trace_color(t_hook_info *info, t_pt px);
 
 t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin);
 void			ft_julia(t_hook_info *info);

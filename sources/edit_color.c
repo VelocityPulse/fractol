@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 13:18:32 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 14:05:05 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 16:24:35 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,7 @@ static void		ft_edit_color1(t_hook_info *info)
 {
 	if (info->keycode == 25)
 	{
-		if (info->f->color_value1 > 0)
-			info->f->color_value1--;
-		else
-			info->f->color_value1 = COLOR_INTERVAL;
-	}
-	else
-	{
-		if (info->f->color_value1 < 30)
-			info->f->color_value1++;
-		else
-			info->f->color_value1 = 0;
-	}
-	ft_calc_color1(info);
-}
-
-static void			ft_edit_color2(t_hook_info *info)
-{
-	if (info->keycode == 31)
-	{
-		if (info->f->color_value1 > 0)
+		if (info->f->color_value1 > 1)
 			info->f->color_value1--;
 		else
 			info->f->color_value1 = COLOR_INTERVAL;
@@ -45,8 +26,26 @@ static void			ft_edit_color2(t_hook_info *info)
 		if (info->f->color_value1 < COLOR_INTERVAL)
 			info->f->color_value1++;
 		else
-			info->f->color_value1 = 0;
+			info->f->color_value1 = 1;
 	}
+	ft_calc_color1(info);
+}
+
+static void			ft_edit_color2(t_hook_info *info)
+{
+	static int		variance = 1;
+	int				cv2;
+
+	cv2 = info->f->color_value2;
+	if ((variance == 1) && (cv2 >= COLOR_INTERVAL || cv2 < 0))
+		variance = -1;
+	else if ((variance == -1) && (cv2 >= COLOR_INTERVAL || cv2 < 0))
+		variance = 1;
+	if (info->keycode == 31)
+		cv2 += variance;
+	else
+		cv2 -= variance;
+	info->f->color_value2 = cv2;
 	ft_calc_color2(info);
 }
 

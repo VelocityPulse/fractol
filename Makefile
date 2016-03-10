@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/03/10 12:51:33 by                  ###   ########.fr       *#
+#*   Updated: 2016/03/10 15:23:10 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,10 @@ SRC =			./sources/main.c \
 				./sources/edit_zoom.c \
 				./sources/edit_imax.c \
 				./sources/edit_reset.c \
-				./sources/edit_pos.c
+				./sources/edit_pos.c \
+				./sources/edit_color.c \
+				./sources/calc_color.c \
+				./sources/trace_color.c
 
 OBJS =			main.o \
 				julia.o \
@@ -36,7 +39,10 @@ OBJS =			main.o \
 				edit_zoom.o \
 				edit_imax.o \
 				edit_reset.o \
-				edit_pos.o
+				edit_pos.o \
+				edit_color.o \
+				calc_color.o \
+				trace_color.o
 
 DRAW =			./draw/draw.a
 

@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 12:30:29 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/16 13:58:53 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 14:28:54 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct	s_line
 
 typedef struct	s_rgb
 {
-	int		r;
-	int		g;
-	int		b;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
 }				t_rgb;
 
 typedef struct	s_dual_color

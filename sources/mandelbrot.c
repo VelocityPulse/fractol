@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 14:04:45 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 15:32:17 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_fractal		*ft_init_mandelbrot_fractal(void)
 	f->zoom = 400;
 	f->i_max = 60;
 	f->nb_zoom = 0;
-	f->color_value1 = 20;
-	f->color_value2 = 20;
+	f->color_value1 = 21;
+	f->color_value2 = 21;
 	return (f);
 }
 
@@ -57,10 +57,7 @@ void			ft_mandelbrot(t_hook_info *info)
 		while (++index.y < f->max.y)
 		{
 			ft_mandelbrot_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
-			if (f->i >= f->i_max)
-				ft_draw_pixel(info->current_mlx, 0x334646, p);
-			else
-				ft_draw_pixel(info->current_mlx, ft_get_hexa_rgb(0, f->i * 255 / f->i_max, f->i * 255 / f->i_max), p);
+			ft_trace_color(info, p);
 			p.y++;
 		}
 		p.x++;
@@ -79,6 +76,7 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 	info = (t_hook_info *)ft_memalloc(sizeof(t_hook_info));
 	info->n = n;
 	info->f = ft_init_mandelbrot_fractal();
+	ft_calc_color(info);
 	str2 = ft_itoa(i);
 	if (n == 1)
 		str1 = ft_strjoin("main : fract'ol Mandelbrot ", str2);
