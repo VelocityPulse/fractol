@@ -6,23 +6,11 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 12:05:50 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 12:16:08 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
-
-void			ft_edit_reset(t_hook_info *info)
-{
-	if (info->keycode == 49)
-	{
-		info->f->zoom = 400;
-		info->f->i_max = 70;
-		info->f->pos.x = 0;
-		info->f->pos.y = 0;
-		info->f->nb_zoom = 0;
-	}
-}
 
 t_fractal		*ft_init_mandelbrot_fractal(void)
 {
@@ -86,10 +74,6 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 
 	info = (t_hook_info *)ft_memalloc(sizeof(t_hook_info));
 	info->n = n;
-	info->keycode = -1;
-	info->mouse.pos.x = 0;
-	info->mouse.pos.y = 0;
-	info->mouse.button = 0;
 	info->f = ft_init_mandelbrot_fractal();
 	str2 = ft_itoa(i);
 	if (n == 1)

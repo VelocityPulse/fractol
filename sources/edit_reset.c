@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   edit_imax.c                                        :+:      :+:    :+:   */
+/*   edit_reset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/10 11:37:23 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 12:17:32 by                  ###   ########.fr       */
+/*   Created: 2016/03/10 12:07:39 by                   #+#    #+#             */
+/*   Updated: 2016/03/10 12:09:15 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-void	ft_edit_imax(t_hook_info *info)
+void	ft_edit_reset(t_hook_info *info)
 {
-	if (info->keycode == 30)
-		info->f->i_max *= FACTOR_ZOOM - 0.38;
-	else if (info->keycode == 33)
-		info->f->i_max /= FACTOR_ZOOM - 0.38;
+	if (info->keycode == 49)
+	{
+		info->f->zoom = 400;
+		info->f->i_max = 70;
+		info->f->pos = ft_make_ptll(0, 0);
+	}
 }
-
-/*
- * 30 == hook left -
- * 33 == hook right +
-*/

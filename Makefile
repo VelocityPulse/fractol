@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/03/10 11:43:08 by                  ###   ########.fr       *#
+#*   Updated: 2016/03/10 12:10:13 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC =			./sources/main.c \
 				./sources/mandelbrot_core.c \
 				./sources/mandelbrot_hook.c \
 				./sources/edit_zoom.c \
-				./sources/edit_imax.c
+				./sources/edit_imax.c \
+				./sources/edit_reset.c
 
 OBJS =			main.o \
 				julia.o \
@@ -32,7 +33,8 @@ OBJS =			main.o \
 				mandelbrot_core.o \
 				mandelbrot_hook.o \
 				edit_zoom.o \
-				edit_imax.o
+				edit_imax.o \
+				edit_reset.o
 
 DRAW =			./draw/draw.a
 
