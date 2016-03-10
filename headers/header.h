@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 11:08:52 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 11:54:02 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
 void			ft_exit_one_fractol(t_hook_info *info);
 
-void			ft_edit_zoom(double *zoom, int *i_max, t_hook_info *info);
+void			ft_edit_zoom(t_hook_info *info);
+void			ft_edit_imax(t_hook_info *info);
 
 t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin);
 void			ft_julia(t_hook_info *info);

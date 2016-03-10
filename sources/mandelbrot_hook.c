@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 15:00:38 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 11:24:20 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 12:02:09 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int		mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info)
 	return (0);
 }
 
-// btn == 5 +
-// btn == 4 -
+/*
+ * btn == 5 scroll +
+ * btn == 4 scroll -
+*/
 
 int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 {

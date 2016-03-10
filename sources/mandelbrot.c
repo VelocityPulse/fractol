@@ -6,20 +6,20 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 11:31:24 by                  ###   ########.fr       */
+/*   Updated: 2016/03/10 12:05:50 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-void			ft_edit_reset(double *zoom, int *i_max, t_hook_info *info)
+void			ft_edit_reset(t_hook_info *info)
 {
 	if (info->keycode == 49)
 	{
-		*zoom = 400;
-		*i_max = 70;
-		info->mouse.pos.x = 0;
-		info->mouse.pos.y = 0;
+		info->f->zoom = 400;
+		info->f->i_max = 70;
+		info->f->pos.x = 0;
+		info->f->pos.y = 0;
 		info->f->nb_zoom = 0;
 	}
 }
@@ -52,8 +52,9 @@ void			ft_mandelbrot(t_hook_info *info)
 	f = info->f;
 	ft_reset_image(info->current_mlx, 0);
 	p = ft_make_pt(0, 0);
-	ft_edit_zoom(&f->zoom, &f->i_max, info);
-	ft_edit_reset(&f->zoom, &f->i_max, info);
+	ft_edit_reset(info);
+	ft_edit_zoom(info);
+	ft_edit_imax(info);
 	ft_mandelbrot_frame_init(f);
 	p.x = 0;
 	index.x = f->min.x - 1;
@@ -75,11 +76,6 @@ void			ft_mandelbrot(t_hook_info *info)
 	ft_draw_pixel(info->current_mlx, 0x00ffff, ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
 	ft_flush_image(info->current_mlx);
 }
-
-/*
- *	printf("mouse x : %lld\nmouse y : %lld\ni_max : %d\n", info->mouse.pos.x, info->mouse.pos.y, f->i_max);
- *	printf("min.x : -%lld- min.y : -%lld-\nmax.x : -%lld- max.y : -%lld-\n\n", f->min.x, f->min.y, f->max.x, f->max.y);
-*/
 
 t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin)
 {
