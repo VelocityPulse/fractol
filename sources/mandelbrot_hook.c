@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 15:00:38 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 23:22:41 by                  ###   ########.fr       */
+/*   Updated: 2016/03/11 15:29:42 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ int		key_hook_mandelbrot(int keycode, t_hook_info *info)
 	}
 	else
 		ft_mandelbrot(info);
-	return (1);
+	return (0);
 }

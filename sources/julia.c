@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 23:39:35 by                  ###   ########.fr       */
+/*   Updated: 2016/03/11 15:18:41 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_fractal	*ft_init_julia_fractal(void)
 	f->min = ft_make_ptll(0, 0);
 	f->max = ft_make_ptll(0, 0);
 	f->zoom = 337;
-	f->i_max = 280;
+	f->i_max = 60;
 	f->pos = ft_make_ptll(0, 0);
 	f->color_value1 = 15;
 	f->color_value2 = 21;
@@ -39,18 +39,17 @@ void			ft_julia(t_hook_info *info)
 
 	f = info->f;
 	ft_reset_image(info->current_mlx, 0);
-	p = ft_make_pt(0, 0);
 	ft_edit_reset_julia(info);
 	ft_edit_control(info);
 	ft_mandelbrot_frame_init(f);
 	p.x = 0;
 	index.x = f->min.x - 1;
-	while (++index.x < f->max.x)
+	while ((++index.x < f->max.x) && !(p.y = 0))
 	{
-		p.y = 0;
 		index.y = f->min.y - 1;
 		while (++index.y < f->max.y)
 		{
+			f->mouse_pos = info->mouse.pos;
 			ft_julia_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
 			ft_trace_color(info, p);
 			p.y++;

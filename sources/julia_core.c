@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 22:17:35 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 23:20:59 by                  ###   ########.fr       */
+/*   Updated: 2016/03/11 15:16:14 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_julia_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i)
 	double		z_i;
 	double		tmp;
 
-	c_r = 0.285;
-	c_i = 0.01;
+	c_r = (double)f->mouse_pos.x / 1000;
+	c_i = (double)f->mouse_pos.y / 1000;
 	z_r = (long double)(px.x + f->min.x + pos.x) / f->zoom + f->x1;
 	z_i = (long double)(px.y + f->min.y + pos.y) / f->zoom + f->y1;
 	while ((z_r * z_r) + (z_i * z_i) < 4 && ++i.x < i.y)

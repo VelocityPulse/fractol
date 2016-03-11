@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/10 23:35:17 by                  ###   ########.fr       */
+/*   Updated: 2016/03/11 15:29:11 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,13 @@ typedef struct	s_fractal
 	int			color_value2;
 	t_rgb		rgb_max1;
 	t_rgb		rgb_max2;
+	t_ptll		mouse_pos;
 }				t_fractal;
 
 typedef struct	s_mouse_info
 {
 	int			button;
+	int			block;
 	t_ptll		pos;
 }				t_mouse_info;
 
@@ -77,7 +79,8 @@ int				key_hook_mandelbrot(int keycode, t_hook_info *info);
 
 void			ft_start_julia_hook(t_hook_info *info);
 int				key_hook_julia(int keycode, t_hook_info *info);
-int				mouse_hook_julia(int btn, int x, int y, t_hook_info *info);
+int				mouse_hook_julia(int x, int y, t_hook_info *info);
+int				click_hook_julia(int btn, int x, int y, t_hook_info *info);
 
 void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
