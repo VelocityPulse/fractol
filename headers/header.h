@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/11 15:29:11 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/12 12:19:11 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin);
 void			ft_mandelbrot(t_hook_info *info);
 void			ft_mandelbrot_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
 void			ft_mandelbrot_frame_init(t_fractal *f);
+
+t_list_mlx		*ft_add_buddhabrot(int n, t_list_mlx *begin);
 
 t_list_mlx		*ft_new_list_mlx(void);
 t_list_mlx		*ft_add_list_mlx(t_list_mlx *begin, t_hook_info *info, int n);
