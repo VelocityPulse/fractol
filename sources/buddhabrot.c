@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 12:21:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/13 16:35:08 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/13 17:40:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 static t_fractal	*ft_init_buddhabrot_fractal(void)
 {
 	t_fractal	*f;
+	t_pt		p;
 
+	p = ft_make_pt(-1, -1);
 	f = (t_fractal *)ft_memalloc(sizeof(t_fractal));
 	f->x1 = -2.1;
 	f->x2 = 0.6;
@@ -30,6 +32,7 @@ static t_fractal	*ft_init_buddhabrot_fractal(void)
 	f->nb_zoom = 0;
 	f->color_value1 = 27;
 	f->color_value2 = 27;
+	ft_reset_buddhabrot_tab(f, 2);
 	return (f);
 }
 
@@ -53,6 +56,7 @@ void				ft_buddhabrot(t_hook_info *info)
 		while (++index.y < f->max.y)
 		{
 			ft_buddhabrot_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
+			ft_buddhabrot_add_iter(f);
 			p.y++;
 		}
 		p.x++;
