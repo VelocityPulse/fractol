@@ -30,7 +30,8 @@ SRC =			./sources/main.c \
 				./sources/trace_color.c \
 				./sources/julia_hook.c \
 				./sources/julia_core.c \
-				./sources/buddhabrot.c
+				./sources/buddhabrot.c \
+				./sources/buddhabrot_hook.c
 
 OBJS =			main.o \
 				julia.o \
@@ -50,7 +51,8 @@ OBJS =			main.o \
 				trace_color.o \
 				julia_hook.o \
 				julia_core.o \
-				buddhabrot.o
+				buddhabrot.o \
+				buddhabrot_hook.o
 
 DRAW =			./draw/draw.a
 

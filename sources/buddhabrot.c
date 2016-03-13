@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 12:21:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/12 12:29:02 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/13 16:35:08 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,35 @@ static t_fractal	*ft_init_buddhabrot_fractal(void)
 	return (f);
 }
 
-t_list_mlx			*buddhabrot(int n, t_list_mlx *begin)
+void				ft_buddhabrot(t_hook_info *info)
+{
+	t_fractal *f;
+	t_pt		p;
+	t_ptll		index;
+
+	f = info->f;
+	ft_reset_image(info->current_mlx, 0);
+	ft_edit_reset_buddhabrot(info);
+	ft_edit_control(info);
+	ft_mandelbrot_frame_init(f);
+	p.x = 0;
+	index.x = f->min.x - 1;
+	while (++index.x < f->max.x)
+	{
+		p.y = 0;
+		index.y = f->min.y - 1;
+		while (++index.y < f->max.y)
+		{
+			ft_buddhabrot_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
+			p.y++;
+		}
+		p.x++;
+	}
+	ft_draw_buddhabrot(f);
+	ft_flush_image(info->current_mlx);
+}
+
+t_list_mlx			*ft_add_buddhabrot(int n, t_list_mlx *begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;
