@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 12:21:09 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/13 17:40:38 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/14 17:14:51 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_fractal	*ft_init_buddhabrot_fractal(void)
 	f->min = ft_make_ptll(0, 0);
 	f->max = ft_make_ptll(0, 0);
 	f->zoom = 100;
-	f->i_max = 100;
+	f->i_max = 1000;
 	f->i = 0;
 	f->pos = ft_make_ptll(0, 0);
 	f->nb_zoom = 0;
@@ -48,6 +48,7 @@ void				ft_buddhabrot(t_hook_info *info)
 	ft_edit_control(info);
 	ft_mandelbrot_frame_init(f);
 	p.x = 0;
+	printf("%d\n", W_WIDTH * W_HEIGHT);
 	index.x = f->min.x - 1;
 	while (++index.x < f->max.x)
 	{
@@ -56,12 +57,13 @@ void				ft_buddhabrot(t_hook_info *info)
 		while (++index.y < f->max.y)
 		{
 			ft_buddhabrot_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
-			ft_buddhabrot_add_iter(f);
 			p.y++;
 		}
+		ft_putnbr(p.x);
 		p.x++;
 	}
-	ft_draw_buddhabrot(f);
+	YOLO
+	ft_trace_buddhabrot(info);
 	ft_flush_image(info->current_mlx);
 }
 

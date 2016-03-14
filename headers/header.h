@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/13 17:36:53 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/14 17:15:31 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 # include "debug.h"
 
-# define W_WIDTH 1080
-# define W_HEIGHT 750
+# define W_WIDTH 500
+# define W_HEIGHT 500
 # define FACTOR_ZOOM 1.5
 # define FACTOR_ITER 1.12
 # define COLOR_INTERVAL 40
@@ -54,7 +54,7 @@ typedef struct	s_fractal
 	t_rgb		rgb_max2;
 	t_ptll		mouse_pos;
 	int			iter[W_WIDTH][W_HEIGHT];
-	int			tab[W_WIDTH][W_HEIGHT];
+	int			tab[W_WIDTH * W_HEIGHT];
 }				t_fractal;
 
 typedef struct	s_mouse_info
@@ -118,8 +118,8 @@ void			ft_mandelbrot_frame_init(t_fractal *f);
 t_list_mlx		*ft_add_buddhabrot(int n, t_list_mlx *begin);
 void			ft_buddhabrot(t_hook_info *info);
 void			ft_buddhabrot_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
-void			ft_buddhabrot_add_iter(t_fractal *f);
-void			ft_trace_buddhabrot(t_fractal *f);
+void			ft_buddhabrot_add_iter(t_fractal *f, int tab[]);
+void			ft_trace_buddhabrot(t_hook_info *info);
 void			ft_reset_buddhabrot_tab(t_fractal *f, int m);
 
 t_list_mlx		*ft_new_list_mlx(void);

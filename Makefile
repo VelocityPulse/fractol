@@ -32,7 +32,7 @@ SRC =			./sources/main.c \
 				./sources/julia_core.c \
 				./sources/buddhabrot.c \
 				./sources/buddhabrot_hook.c \
-				./sources/buddhabrot_core.c
+				./sources/buddhabrot_core.c \
 				./sources/trace_buddhabrot.c
 
 OBJS =			main.o \
