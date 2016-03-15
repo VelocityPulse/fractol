@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/03/15 15:31:13 by                  ###   ########.fr       *#
+#*   Updated: 2016/03/15 17:13:25 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,10 @@ SRC =			./sources/main.c \
 				./sources/julia_core.c \
 				./sources/burningship.c \
 				./sources/burningship_hook.c \
-				./sources/burningship_core.c
+				./sources/burningship_core.c \
+				./sources/juliabs.c \
+				./sources/juliabs_hook.c \
+				./sources/juliabs_core.c
 
 OBJS =			main.o \
 				julia.o \
@@ -54,7 +57,10 @@ OBJS =			main.o \
 				julia_core.o \
 				burningship.o \
 				burningship_hook.o \
-				burningship_core.o
+				burningship_core.o \
+				juliabs.o \
+				juliabs_hook.o \
+				juliabs_core.o
 
 DRAW =			./draw/draw.a
 

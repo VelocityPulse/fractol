@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/15 15:30:45 by                  ###   ########.fr       */
+/*   Updated: 2016/03/15 17:11:11 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ int				key_hook_julia(int keycode, t_hook_info *info);
 int				mouse_hook_julia(int x, int y, t_hook_info *info);
 int				click_hook_julia(int btn, int x, int y, t_hook_info *info);
 
+void			ft_start_juliabs_hook(t_hook_info *info);
+int				key_hook_juliabs(int keycode, t_hook_info *info);
+int				mouse_hook_juliabs(int x, int y, t_hook_info *info);
+int				click_hook_juliabs(int btn, int x, int y, t_hook_info *info);
+
 void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
 void			ft_exit_one_fractol(t_hook_info *info);
@@ -96,6 +101,7 @@ void			ft_edit_imax(t_hook_info *info);
 void			ft_edit_reset_mandelbrot(t_hook_info *info);
 void			ft_edit_reset_julia(t_hook_info *info);
 void			ft_edit_reset_burningship(t_hook_info *info);
+void			ft_edit_reset_juliabs(t_hook_info *info);
 void			ft_edit_pos(t_hook_info *info);
 void			ft_edit_color(t_hook_info *info);
 
@@ -103,6 +109,10 @@ void			ft_calc_color(t_hook_info *info);
 void			ft_calc_color1(t_hook_info *info);
 void			ft_calc_color2(t_hook_info *info);
 void			ft_trace_color(t_hook_info *info, t_pt px);
+
+t_list_mlx		*ft_add_juliabs(int n, t_list_mlx *begin);
+void			ft_juliabs(t_hook_info *info);
+void			ft_juliabs_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
 
 t_list_mlx		*ft_add_burningship(int n, t_list_mlx *begin);
 void			ft_burningship(t_hook_info *info);

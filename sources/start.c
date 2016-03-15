@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 15:41:01 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/15 15:30:25 by                  ###   ########.fr       */
+/*   Updated: 2016/03/15 16:22:43 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_display_list(char *str)
 	ft_putstr(" Julia\n");
 	ft_putstr(" Mandelbrot\n");
 	ft_putstr(" Burningship\n");
+	ft_putstr(" Juliabs (for julia-burningship)\n");
 	exit(0);
 }
 
@@ -45,6 +46,8 @@ void	ft_start(int ac, char **av)
 				begin = ft_add_mandelbrot(i, begin);
 			else if (!ft_strcmp(av[i], "Burningship"))
 				begin = ft_add_burningship(i, begin);
+			else if (!ft_strcmp(av[i], "Juliabs"))
+				begin = ft_add_juliabs(i, begin);
 			else
 				ft_display_list(av[i]);
 			i++;
