@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 10:31:10 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 13:13:36 by                  ###   ########.fr       */
+/*   Updated: 2016/03/15 15:42:43 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		ft_calc_pos(t_hook_info *info, t_ptll mouse_pos)
 
 void			ft_edit_zoom(t_hook_info *info)
 {
-	if (info->keycode == 24) // +
+	if (info->keycode == 24)
 	{
 		if (info->mouse.button == 5 || info->mouse.button == 1)
 			ft_calc_pos(info, info->mouse.pos);

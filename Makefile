@@ -6,7 +6,7 @@
 #    By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/15 16:45:32 by cchameyr          #+#    #+#              #
-#*   Updated: 2016/03/10 22:32:05 by                  ###   ########.fr       *#
+#*   Updated: 2016/03/15 15:31:13 by                  ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,9 @@ SRC =			./sources/main.c \
 				./sources/trace_color.c \
 				./sources/julia_hook.c \
 				./sources/julia_core.c \
-				./sources/buddhabrot.c \
-				./sources/buddhabrot_hook.c \
-				./sources/buddhabrot_core.c \
-				./sources/trace_buddhabrot.c
+				./sources/burningship.c \
+				./sources/burningship_hook.c \
+				./sources/burningship_core.c
 
 OBJS =			main.o \
 				julia.o \
@@ -53,10 +52,9 @@ OBJS =			main.o \
 				trace_color.o \
 				julia_hook.o \
 				julia_core.o \
-				buddhabrot.o \
-				buddhabrot_hook.o \
-				buddhabrot_core.o \
-				trace_buddhabrot.o
+				burningship.o \
+				burningship_hook.o \
+				burningship_core.o
 
 DRAW =			./draw/draw.a
 

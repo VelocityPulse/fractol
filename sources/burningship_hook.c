@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buddhabrot_hook.c                                  :+:      :+:    :+:   */
+/*   burningship_hook.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/12 12:31:54 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/12 12:35:19 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/03/15 14:52:57 by                   #+#    #+#             */
+/*   Updated: 2016/03/15 15:07:48 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-void	ft_start_buddhabrot_hook(t_hook_info *info)
+void	ft_start_burningship_hook(t_hook_info *info)
 {
 	t_mlx	*mlx;
 
 	mlx = info->current_mlx;
-	mlx_hook(mlx->p_win, KeyPress, KeyPressMask, key_hook_buddhabrot, info);
-	mlx_mouse_hook(mlx->p_win, mouse_hook_buddhabrot, info);
+	mlx_hook(mlx->p_win, KeyPress, KeyPressMask, key_hook_burningship, info);
+	mlx_mouse_hook(mlx->p_win, mouse_hook_burningship, info);
 }
 
-int		mouse_hook_buddhabrot(int btn, int x, int y, t_hook_info *info)
+int		mouse_hook_burningship(int b, int x, int y, t_hook_info *info)
 {
-	info->mouse.button = btn;
+	info->mouse.button = b;
 	info->mouse.pos = ft_make_ptll(x, y);
-	if (btn == 5 || btn == 1)
+	if (b == 5 || b == 1)
 		info->keycode = 24;
-	else if (btn == 4 || btn == 2)
+	else if (b == 4 || b == 2)
 		info->keycode = 27;
-	ft_buddhabrot(info);
+	ft_burningship(info);
 	info->mouse.button = -1;
 	info->keycode = -1;
 	return (0);
@@ -40,7 +40,7 @@ int		mouse_hook_buddhabrot(int btn, int x, int y, t_hook_info *info)
  * btn == 4 scroll -
 */
 
-int		key_hook_buddhabrot(int keycode, t_hook_info *info)
+int		key_hook_burningship(int keycode, t_hook_info *info)
 {
 	info->keycode = keycode;
 	if (keycode == 53)
@@ -51,6 +51,6 @@ int		key_hook_buddhabrot(int keycode, t_hook_info *info)
 			ft_exit_one_fractol(info);
 	}
 	else
-		ft_buddhabrot(info);
+		ft_burningship(info);
 	return (0);
 }

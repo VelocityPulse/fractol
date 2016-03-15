@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/14 17:15:31 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/15 15:30:45 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 # include "debug.h"
 
-# define W_WIDTH 500
-# define W_HEIGHT 500
+# define W_WIDTH 1080
+# define W_HEIGHT 750
 # define FACTOR_ZOOM 1.5
 # define FACTOR_ITER 1.12
 # define COLOR_INTERVAL 40
@@ -45,7 +45,7 @@ typedef struct	s_fractal
 	int			i;
 	int			i_max;
 	t_ptll		min;
-	t_ptll		max;
+	t_ptll 		max;
 	int			nb_zoom;
 	t_ptll		pos;
 	int			color_value1;
@@ -53,8 +53,6 @@ typedef struct	s_fractal
 	t_rgb		rgb_max1;
 	t_rgb		rgb_max2;
 	t_ptll		mouse_pos;
-	int			iter[W_WIDTH][W_HEIGHT];
-	int			tab[W_WIDTH * W_HEIGHT];
 }				t_fractal;
 
 typedef struct	s_mouse_info
@@ -74,6 +72,10 @@ typedef struct	s_hook_info
 	t_fractal		*f;
 }				t_hook_info;
 
+void			ft_start_burningship_hook(t_hook_info *info);
+int				mouse_hook_burningship(int b, int x, int y, t_hook_info *info);
+int				key_hook_burningship(int keycode, t_hook_info *info);
+
 void			ft_start_mandelbrot_hook(t_hook_info *info);
 int				mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info);
 int				key_hook_mandelbrot(int keycode, t_hook_info *info);
@@ -82,10 +84,6 @@ void			ft_start_julia_hook(t_hook_info *info);
 int				key_hook_julia(int keycode, t_hook_info *info);
 int				mouse_hook_julia(int x, int y, t_hook_info *info);
 int				click_hook_julia(int btn, int x, int y, t_hook_info *info);
-
-void			ft_start_buddhabrot_hook(t_hook_info *info);
-int				mouse_hook_buddhabrot(int btn, int x, int y, t_hook_info *info);
-int				key_hook_buddhabrot(int keycode, t_hook_info *info);
 
 void			ft_start(int ac, char **av);
 void			ft_exit_all_fractol(t_hook_info *info);
@@ -97,7 +95,7 @@ void			ft_calc_pos(t_hook_info *info, t_ptll mouse_pos);
 void			ft_edit_imax(t_hook_info *info);
 void			ft_edit_reset_mandelbrot(t_hook_info *info);
 void			ft_edit_reset_julia(t_hook_info *info);
-void			ft_edit_reset_buddhabrot(t_hook_info *info);
+void			ft_edit_reset_burningship(t_hook_info *info);
 void			ft_edit_pos(t_hook_info *info);
 void			ft_edit_color(t_hook_info *info);
 
@@ -105,6 +103,10 @@ void			ft_calc_color(t_hook_info *info);
 void			ft_calc_color1(t_hook_info *info);
 void			ft_calc_color2(t_hook_info *info);
 void			ft_trace_color(t_hook_info *info, t_pt px);
+
+t_list_mlx		*ft_add_burningship(int n, t_list_mlx *begin);
+void			ft_burningship(t_hook_info *info);
+void			ft_burningship_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
 
 t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin);
 void			ft_julia(t_hook_info *info);
@@ -114,13 +116,6 @@ t_list_mlx		*ft_add_mandelbrot(int n, t_list_mlx *begin);
 void			ft_mandelbrot(t_hook_info *info);
 void			ft_mandelbrot_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
 void			ft_mandelbrot_frame_init(t_fractal *f);
-
-t_list_mlx		*ft_add_buddhabrot(int n, t_list_mlx *begin);
-void			ft_buddhabrot(t_hook_info *info);
-void			ft_buddhabrot_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i);
-void			ft_buddhabrot_add_iter(t_fractal *f, int tab[]);
-void			ft_trace_buddhabrot(t_hook_info *info);
-void			ft_reset_buddhabrot_tab(t_fractal *f, int m);
 
 t_list_mlx		*ft_new_list_mlx(void);
 t_list_mlx		*ft_add_list_mlx(t_list_mlx *begin, t_hook_info *info, int n);
