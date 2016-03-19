@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/19 14:51:52 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/19 16:40:13 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct	s_fractal
 	int			i;
 	int			i_max;
 	t_ptll		min;
-	t_ptll 		max;
+	t_ptll		max;
 	int			nb_zoom;
 	t_ptll		pos;
 	int			color_value1;

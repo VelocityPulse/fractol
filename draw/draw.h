@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/08 11:41:53 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/19 13:00:31 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/02/19 15:17:56 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/02/22 12:22:10 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <stdlib.h>
 # include <math.h>
 # include "draw_structs.h"
-# include "../headers/libft.h"
-# include "../libmlx/mlx.h"
+# include "libft.h"
+# include "mlx.h"
 
-t_mlx		*ft_mlx_init(int width, int height, char *name);
+t_mlx		*ft_mlx_init(int width, int height, t_mlx *mlx, char *name);
 void		ft_clear_mlx(t_mlx *mlx);
 void		ft_new_image(t_mlx *mlx);
 void		ft_flush_image(t_mlx *x);
@@ -50,7 +50,7 @@ void		ft_array_layout(t_pt3d *pts, int size, t_pt *new_pt, t_matrix t);
 t_rgb		ft_get_rgb(int hexa);
 int			ft_get_hexa(t_rgb rgb);
 int			ft_get_hexa_rgb(int r, int g, int b);
-t_rgb		ft_find_color_gradient(t_dual_color, int n, int p);
+t_rgb		ft_find_color_gradient(t_dual_color c, int n, int p);
 
 void		ft_draw_line(t_line l, t_mlx *mlx, int color);
 void		ft_draw_horizontal(t_line l, t_mlx *mlx, int variance, int color);
