@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edit_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/10 13:18:32 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 22:30:26 by                  ###   ########.fr       */
+/*   Created: 2016/03/19 12:20:33 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:56:16 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void		ft_edit_color1(t_hook_info *info)
 	ft_calc_color1(info);
 }
 
-static void			ft_edit_color2(t_hook_info *info)
+static void		ft_edit_color2(t_hook_info *info)
 {
 	static int		variance = 1;
 	int				cv2;
@@ -58,8 +58,8 @@ void			ft_edit_color(t_hook_info *info)
 }
 
 /*
- * 25 = (
- * 29 = )
- * 31 = o
- * 35 = p
+** 25 = (
+** 29 = )
+** 31 = o
+** 35 = p
 */

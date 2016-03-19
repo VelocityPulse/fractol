@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 17:04:27 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/11 15:18:41 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/19 12:23:58 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_fractal	*ft_init_julia_fractal(void)
 	return (f);
 }
 
-void			ft_julia(t_hook_info *info)
+void				ft_julia(t_hook_info *info)
 {
 	t_fractal	*f;
 	t_pt		p;
@@ -59,7 +59,7 @@ void			ft_julia(t_hook_info *info)
 	ft_flush_image(info->current_mlx);
 }
 
-t_list_mlx		*ft_add_julia(int n, t_list_mlx *begin)
+t_list_mlx			*ft_add_julia(int n, t_list_mlx *begin)
 {
 	t_hook_info		*info;
 	static int		i = 1;

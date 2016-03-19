@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   juliabs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 16:17:39 by                   #+#    #+#             */
-/*   Updated: 2016/03/15 17:43:39 by                  ###   ########.fr       */
+/*   Created: 2016/03/19 12:20:57 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:23:37 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-static t_fractal		*ft_init_juliabs_fractal(void)
+static t_fractal	*ft_init_juliabs_fractal(void)
 {
 	t_fractal *f;
 
@@ -33,7 +33,7 @@ static t_fractal		*ft_init_juliabs_fractal(void)
 	return (f);
 }
 
-void			ft_juliabs(t_hook_info *info)
+void				ft_juliabs(t_hook_info *info)
 {
 	t_fractal	*f;
 	t_pt		p;

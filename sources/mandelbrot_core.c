@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot_core.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/09 13:08:55 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 23:20:55 by                  ###   ########.fr       */
+/*   Created: 2016/03/19 12:50:12 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:50:13 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_mandelbrot_frame_init(t_fractal *f)
 {
 	int		image_x;
 	int		image_y;
-	
+
 	image_x = (f->x2 - f->x1) * f->zoom;
 	image_y = (f->y2 - f->y1) * f->zoom;
 	f->max.x = image_x - ((image_x - W_WIDTH) / 2);
@@ -47,6 +47,6 @@ void	ft_mandelbrot_iter(t_fractal *f, t_ptll pos, t_pt px, t_pt i)
 }
 
 /*
- * i.x = i
- * i.y = i_max
+** i.x = i
+** i.y = i_max
 */

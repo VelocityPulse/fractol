@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/10 14:10:19 by                   #+#    #+#             */
-/*   Updated: 2016/03/10 16:08:56 by                  ###   ########.fr       */
+/*   Created: 2016/03/19 12:19:47 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:49:17 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void		ft_calc_color2(t_hook_info *info)
 
 void		ft_calc_color(t_hook_info *info)
 {
-		ft_calc_color1(info);
-		ft_calc_color2(info);
+	ft_calc_color1(info);
+	ft_calc_color2(info);
 }

@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:58:17 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/07 16:06:46 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/03/19 12:46:33 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,22 @@ t_list_mlx		*ft_free_list_mlx(t_list_mlx *begin)
 	return (begin);
 }
 
+static void		*ft_list_del(t_list_mlx *list, t_list_mlx *b)
+{
+	t_hook_info		*info;
+
+	info = (t_hook_info *)list->info;
+	ft_clear_mlx(info->current_mlx);
+	ft_memdel((void **)&info->f);
+	ft_memdel((void *)&info);
+	ft_memdel((void **)&list);
+	return (b);
+}
+
 t_list_mlx		*ft_free_one_mlx_list(t_list_mlx *begin, int n)
 {
 	t_list_mlx		*parent;
 	t_list_mlx		*list;
-	t_hook_info		*info;
 
 	list = begin;
 	if (list->next && (parent = list))
@@ -78,21 +89,12 @@ t_list_mlx		*ft_free_one_mlx_list(t_list_mlx *begin, int n)
 		if (list->next && list->n == n)
 		{
 			parent->next = list->next;
-			info = (t_hook_info *)list->info;
-			ft_clear_mlx(info->current_mlx);
-			ft_memdel((void **)&info->f);
-			ft_memdel((void *)&info);
-			ft_memdel((void **)&list);
-			return (begin);
+			return (ft_list_del(list, begin));
 		}
 		else if (!list->next && list->n == n)
 		{
-			info = (t_hook_info *)list->info;
-			ft_clear_mlx(info->current_mlx);
-			ft_memdel((void **)&info->f);
-			ft_memdel((void **)&info);
 			ft_memdel((void **)&parent->next);
-			return (begin);
+			return (ft_list_del(list, begin));
 		}
 		parent = list;
 		list = list->next;

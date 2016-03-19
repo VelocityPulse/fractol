@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot_hook.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/09 15:00:38 by                   #+#    #+#             */
-/*   Updated: 2016/03/11 15:29:42 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/03/19 12:21:26 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:57:10 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		mouse_hook_mandelbrot(int btn, int x, int y, t_hook_info *info)
 }
 
 /*
- * btn == 5 scroll +
- * btn == 4 scroll -
+** btn == 5 scroll +
+** btn == 4 scroll -
 */
 
 int		key_hook_mandelbrot(int keycode, t_hook_info *info)

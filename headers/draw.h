@@ -1,5 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
+
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -18,7 +17,7 @@
 # include <math.h>
 # include "draw_structs.h"
 # include "libft.h"
-# include "mlx.h"
+# include "../libmlx/mlx.h"
 
 t_mlx		*ft_mlx_init(int width, int height, char *name);
 void		ft_clear_mlx(t_mlx *mlx);

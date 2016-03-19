@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 15:24:10 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/15 17:11:11 by                  ###   ########.fr       */
+/*   Updated: 2016/03/19 14:51:52 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 # include <unistd.h>
 # include "libft.h"
 # include "draw.h"
-# include "mlx.h"
-# include "X.h"
-
-# include "debug.h"
+# include "../libmlx/mlx.h"
+# include "../libmlx/X.h"
 
 # define W_WIDTH 1080
 # define W_HEIGHT 750

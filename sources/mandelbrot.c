@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/16 12:04:51 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/15 15:24:51 by                  ###   ########.fr       */
+/*   Created: 2016/03/19 12:21:21 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:29:37 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,17 @@ void				ft_mandelbrot(t_hook_info *info)
 		{
 			ft_mandelbrot_iter(f, info->f->pos, p, ft_make_pt(-1, f->i_max));
 			ft_trace_color(info, p);
-			p.y++;
+			++p.y;
 		}
-		p.x++;
+		++p.x;
 	}
-	ft_draw_pixel(info->current_mlx, 0x00ffff, ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
 	ft_flush_image(info->current_mlx);
 }
+
+/*
+** ft_draw_pixel(info->current_mlx, 0xff,
+** ft_make_pt(W_WIDTH / 2, W_HEIGHT / 2));
+*/
 
 t_list_mlx			*ft_add_mandelbrot(int n, t_list_mlx *begin)
 {

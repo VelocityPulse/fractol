@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   edit_zoom.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/10 10:31:10 by                   #+#    #+#             */
-/*   Updated: 2016/03/15 15:42:43 by                  ###   ########.fr       */
+/*   Created: 2016/03/19 12:20:49 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:54:35 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-void		ft_calc_pos(t_hook_info *info, t_ptll mouse_pos)
+void	ft_calc_pos(t_hook_info *info, t_ptll mouse_pos)
 {
 	info->f->pos.x += (mouse_pos.x * 2 - W_WIDTH) / 2;
 	info->f->pos.y += (mouse_pos.y * 2 - W_HEIGHT) / 2;
 }
 
-void			ft_edit_zoom(t_hook_info *info)
+void	ft_edit_zoom(t_hook_info *info)
 {
 	if (info->keycode == 24)
 	{

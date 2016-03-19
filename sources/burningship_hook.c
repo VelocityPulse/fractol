@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   burningship_hook.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 14:52:57 by                   #+#    #+#             */
-/*   Updated: 2016/03/15 15:07:48 by                  ###   ########.fr       */
+/*   Created: 2016/03/19 12:19:59 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/03/19 12:49:49 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		mouse_hook_burningship(int b, int x, int y, t_hook_info *info)
 }
 
 /*
- * btn == 5 scroll +
- * btn == 4 scroll -
+** btn == 5 scroll +
+** btn == 4 scroll -
 */
 
 int		key_hook_burningship(int keycode, t_hook_info *info)
