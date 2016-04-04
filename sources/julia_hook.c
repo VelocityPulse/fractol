@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 12:56:21 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/19 12:56:23 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/04/04 14:51:17 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		mouse_hook_julia(int x, int y, t_hook_info *info)
 	if (x >= 0 && x <= W_WIDTH && y >= 0 && y <= W_HEIGHT &&
 			info->mouse.block == 0)
 	{
-		info->mouse.pos.x = (y * 2 - W_WIDTH);
+		info->mouse.pos.x = (x * 2 - W_WIDTH);
 		info->mouse.pos.y = (y * 2 - W_HEIGHT);
 		ft_julia(info);
 	}
