@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_pixel.c                                       :+:      :+:    :+:   */
+/*   draw_get_pixel.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/15 12:20:22 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/06 13:28:13 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/04/06 13:27:46 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/04/06 14:01:12 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 
-void	ft_draw_pixel(t_mlx *mlx, int color, t_pt pt)
+int		ft_get_pixel(t_mlx *mlx, t_pt pt)
 {
 	long int	position;
 	long int	octet;
@@ -20,9 +20,9 @@ void	ft_draw_pixel(t_mlx *mlx, int color, t_pt pt)
 	octet = mlx->mlx_img->bpp / 8;
 	position = (pt.y * mlx->mlx_img->width) + (pt.x * octet);
 	if (pt.y >= mlx->height || pt.y < 0 || pt.x >= mlx->width || pt.x < 0)
-		return ;
+		return (0);
 	if (position < 0 || position > mlx->mlx_img->width * mlx->height)
-		return ;
-	if (ft_memcmp(mlx->mlx_img->data + position, &color, (unsigned)octet) != 0)
-		ft_memcpy(mlx->mlx_img->data + position, &color, (unsigned)octet);
+		return (0);
+	return (*(unsigned int *)(unsigned long)(mlx->mlx_img->data +
+				(mlx->mlx_img->width * pt.y) + (pt.x * octet)));
 }

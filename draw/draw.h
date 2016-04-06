@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 15:17:56 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/28 18:35:35 by                  ###   ########.fr       */
+/*   Updated: 2016/04/06 13:30:00 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		ft_clear_mlx(t_mlx *mlx);
 void		ft_new_image(t_mlx *mlx);
 void		ft_flush_image(t_mlx *x);
 void		ft_draw_pixel(t_mlx *mlx, int color, t_pt pt);
+int			ft_get_pixel(t_mlx *mlx, t_pt pt);
 void		ft_reset_image(t_mlx *mlx, int color);
 
 t_line		ft_make_line(int x1, int y1, int x2, int y2);
