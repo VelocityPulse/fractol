@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 12:20:08 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/03 12:10:29 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/04/08 22:41:16 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct	s_pt3df
 	float			y;
 	float			z;
 }				t_pt3df;
+
+typedef struct	s_lstline
+{
+	struct s_lstline	*next;
+	char				*line;
+}				t_lstline;
 
 typedef struct	s_list
 {
@@ -139,5 +145,9 @@ t_pt			**ft_pt_alloc(t_pt size);
 t_pt			**ft_free_pt(t_pt **tab_pts, int size);
 t_pt3d			**ft_pt3d_alloc(t_pt size);
 t_pt3d			**ft_free_pt3d(t_pt3d **tab_pts, int size);
+
+void			ft_lstline_del(t_lstline *begin);
+t_lstline		*ft_new_lstline(void);
+t_lstline		*ft_add_lstline(t_lstline *begin, char *line);
 
 #endif
