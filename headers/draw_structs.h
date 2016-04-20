@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/19 15:05:30 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/03/19 15:06:32 by cchameyr         ###   ########.fr       */
+/*   Created: 2016/03/21 12:17:17 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/04/20 11:21:34 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _DRAW_STRUCTS_H
 # define _DRAW_STRUCTS_H
 
-# include "libft.h"
+# include "../headers/libft.h"
 
 typedef struct	s_area
 {
@@ -33,9 +33,9 @@ typedef struct	s_line
 
 typedef struct	s_rgb
 {
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
+	int		r;
+	int		g;
+	int		b;
 }				t_rgb;
 
 typedef struct	s_dual_color
@@ -72,6 +72,7 @@ typedef struct	s_img
 	char		*data;
 	void		*p_img;
 	int			width;
+	int			height;
 	int			bpp;
 	int			endian;
 	int			max_size;
