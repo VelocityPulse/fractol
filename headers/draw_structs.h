@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 12:17:17 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/20 11:21:34 by                  ###   ########.fr       */
+/*   Updated: 2016/04/20 11:44:50 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ typedef struct	s_img
 {
 	char		*data;
 	void		*p_img;
+	t_pt		size:
 	int			width;
-	int			height;
 	int			bpp;
 	int			endian;
 	int			max_size;
