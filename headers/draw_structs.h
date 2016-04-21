@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 12:17:17 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/20 11:49:43 by                  ###   ########.fr       */
+/*   Updated: 2016/04/21 14:42:43 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct	s_matrix_rot
 
 typedef struct	s_img
 {
+	int			loaded;
 	char		*data;
 	void		*p_img;
 	t_pt		size;
