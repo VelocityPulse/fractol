@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:27:46 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/20 12:11:56 by                  ###   ########.fr       */
+/*   Updated: 2016/04/21 16:43:13 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int		ft_get_pixel_image(t_img *img, t_pt pt)
 		return (0);
 	if (position < 0 || position > img->width * img->size.y)
 		return (0);
-	return (*(unsigned int *)(unsigned long)img->data +
-				(img->width * pt.y) + (pt.x * octet));
+	return (*(unsigned int *)(unsigned long)(img->data +
+				position));
 
 }
 
@@ -40,5 +40,5 @@ int		ft_get_pixel(t_mlx *mlx, t_pt pt)
 	if (position < 0 || position > mlx->mlx_img->width * mlx->height)
 		return (0);
 	return (*(unsigned int *)(unsigned long)(mlx->mlx_img->data +
-				(mlx->mlx_img->width * pt.y) + (pt.x * octet)));
+				position));
 }
