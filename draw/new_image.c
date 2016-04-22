@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 12:21:11 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/02/15 12:21:15 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/04/22 11:29:46 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ft_new_image(t_mlx *mlx)
 	if (!img->p_img)
 		return ;
 	d = mlx_get_data_addr(img->p_img, &img->bpp, &img->width, &img->endian);
+	img->octet = img->bpp / 8;
 	img->data = d;
 	mlx->mlx_img = img;
-	mlx->mlx_img->max_size = (img->bpp / 8) * mlx->width * mlx->height;
+	mlx->mlx_img->max_size = img->octet * mlx->width * mlx->height;
 }
