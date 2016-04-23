@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/06 13:27:46 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/22 11:37:56 by                  ###   ########.fr       */
+/*   Updated: 2016/04/23 15:53:37 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_get_pixel_image(t_img *img, t_pt pt)
 	position = (pt.y * img->width) + (pt.x * img->octet);
 	if (pt.y >= img->size.y || pt.y < 0 || pt.x >= img->size.x || pt.x < 0)
 		return (0);
-	if (position < 0 || position > img->width * img->size.y)
+	if (position < 0 || position > img->max_size)
 		return (0);
 	return (*(unsigned int *)(unsigned long)(img->data +
 				position));
@@ -33,7 +33,7 @@ int		ft_get_pixel(t_mlx *mlx, t_pt pt)
 	position = (pt.y * mlx->mlx_img->width) + (pt.x * mlx->mlx_img->octet);
 	if (pt.y >= mlx->height || pt.y < 0 || pt.x >= mlx->width || pt.x < 0)
 		return (0);
-	if (position < 0 || position > mlx->mlx_img->width * mlx->height)
+	if (position < 0 || position > mlx->mlx_img->max_size)
 		return (0);
 	return (*(unsigned int *)(unsigned long)(mlx->mlx_img->data +
 				position));
