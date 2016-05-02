@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/02 15:07:48 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/05/02 15:12:50 by cchameyr         ###   ########.fr       */
+/*   Updated: 2016/05/02 15:24:20 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int		ft_divide_color(int color)
 	c.r /= 2;
 	c.g /= 2;
 	c.b /= 2;
-	return (ft_get_rgb(c));
+	return (ft_get_hexa(c));
 }
