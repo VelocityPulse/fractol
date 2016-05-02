@@ -41,7 +41,8 @@ SRCS =			./draw_pixel.c \
 				./draw_get_rgb.c \
 				./draw_get_hexa.c \
 				./draw_find_color_gradient.c \
-				./draw_get_pixel.c
+				./draw_get_pixel.c \
+				./draw_divide_color.c
 
 OBJS =			./draw_pixel.o \
 				./new_image.o \
@@ -72,7 +73,8 @@ OBJS =			./draw_pixel.o \
 				./draw_get_rgb.o \
 				./draw_get_hexa.o \
 				./draw_find_color_gradient.o \
-				./draw_get_pixel.o
+				./draw_get_pixel.o \
+				./draw_divide_color.o
 
 FLAGS = 		-Wall -Wextra -Werror
 

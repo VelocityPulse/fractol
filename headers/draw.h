@@ -6,7 +6,7 @@
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 15:17:56 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/20 12:08:37 by                  ###   ########.fr       */
+/*   Updated: 2016/05/02 15:12:55 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_rgb		ft_get_rgb(int hexa);
 int			ft_get_hexa(t_rgb rgb);
 int			ft_get_hexa_rgb(int r, int g, int b);
 t_rgb		ft_find_color_gradient(t_dual_color c, int n, int p);
+int			ft_divide_color(int color);
 
 void		ft_draw_line(t_line l, t_mlx *mlx, int color);
 void		ft_draw_horizontal(t_line l, t_mlx *mlx, int variance, int color);
