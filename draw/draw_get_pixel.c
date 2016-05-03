@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/06 13:27:46 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/23 15:53:37 by                  ###   ########.fr       */
+/*   Created: 2016/05/03 12:10:54 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/05/03 12:11:01 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		ft_get_pixel_image(t_img *img, t_pt pt)
 		return (0);
 	return (*(unsigned int *)(unsigned long)(img->data +
 				position));
-
 }
 
 int		ft_get_pixel(t_mlx *mlx, t_pt pt)

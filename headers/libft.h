@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cchameyr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/21 12:20:08 by cchameyr          #+#    #+#             */
-/*   Updated: 2016/04/08 22:41:16 by                  ###   ########.fr       */
+/*   Created: 2016/05/03 12:13:16 by cchameyr          #+#    #+#             */
+/*   Updated: 2016/05/03 12:13:38 by cchameyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,7 @@ void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /*
- **
- ** private functions
- **
+** private functions
 */
 
 void			ft_swap(int *a, int *b);
